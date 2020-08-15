@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { SEOService } from 'src/app/services/seo.service';
-import { BotsService } from 'src/app/services/bots.service';
+import { GuildsService } from 'src/app/services/guilds.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,24 +9,24 @@ import { BotsService } from 'src/app/services/bots.service';
   styleUrls: ['./dashboard-overview.component.css']
 })
 export class DashboardComponent implements OnInit {
-  unreviewedSavedBots = [];
+  unreviewedSavedGuilds = [];
 
   constructor(
-    public botService: BotsService,
+    public guildService: GuildsService,
     private seo: SEOService,
     public userService: UserService) {
   }
 
   async ngOnInit() {
     this.seo.setTags({
-      titlePrefix: 'DBots',
+      titlePrefix: 'DList',
       titleSuffix: 'Dashboard',
-      description: 'Manage Discord bot listings, view logs and more with the DBots dashboard.',
+      description: 'Manage Discord guild listings, view logs and more with the DList dashboard.',
       url: 'dashboard'
     });
 
-    await this.botService.init();
+    await this.guildService.init();
 
-    this.unreviewedSavedBots = this.botService.unreviewedBots.saved;
+    this.unreviewedSavedGuilds = this.guildService.unreviewedGuilds.saved;
   }
 }

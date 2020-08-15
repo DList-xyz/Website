@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { BotsService } from 'src/app/services/bots.service';
+import { GuildsService } from 'src/app/services/guilds.service';
 import { UserService } from 'src/app/services/user.service';
 import { SEOService } from 'src/app/services/seo.service';
 
@@ -13,7 +13,7 @@ import { SEOService } from 'src/app/services/seo.service';
   styleUrls: ['./log-module.component.css']
 })
 export class LogModuleComponent implements OnInit {
-  bot: any;
+  guild: any;
   user: any;
 
   members: any[];
@@ -26,26 +26,26 @@ export class LogModuleComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private botService: BotsService,
+    private guildService: GuildsService,
     private route: ActivatedRoute,
     private seo: SEOService,
     public userService: UserService) {}
 
   async ngOnInit() {
-    await this.botService.init();
+    await this.guildService.init();
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.bot = this.botService.getSavedBot(id);
-    this.user = this.botService.getBot(id);
+    this.guild = this.guildService.getSavedGuild(id);
+    this.user = this.guildService.getGuild(id);
 
     this.seo.setTags({
-      titlePrefix: 'DBots',
+      titlePrefix: 'DList',
       titleSuffix: `${this.user.username} Logs`,
-      description: 'View bot logs and changes to the bot listing.',
-      url: `dashboard/bots/${id}/log`
+      description: 'View guild logs and changes to the guild listing.',
+      url: `dashboard/guilds/${id}/log`
     });
 
-    const log = await this.botService.getSavedLog(id);
+    const log = await this.guildService.getSavedLog(id);
     this.changes = log.changes.reverse();
     
     this.dataSource = new MatTableDataSource(this.changes);

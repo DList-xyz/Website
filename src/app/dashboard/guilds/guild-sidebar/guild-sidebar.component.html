@@ -1,0 +1,47 @@
+<sidebar>
+    <div *ngIf="guild" class="side-nav navbar-dark">
+        <div class="header">
+            <div class="d-flex justify-content-center">
+                <img *ngIf="guild.iconURL"
+                    [src]="guild.iconURL" [alt]="guild.name">
+                <div *ngIf="!guild.iconURL"
+                    class="alt-name d-flex flex-column justify-content-center">
+                    <span>{{ guild.nameAcronym }}</span>
+                </div>
+            </div>
+            <h4 [routerLink]="['/servers/' + id]">{{ guild.name }}</h4>
+        </div>
+        <div class="category">General</div>
+        <div *ngIf="guild.id"
+            class="navbar-nav">
+            <a [routerLink]="['/servers/' + guild.id]" routerLinkActive="active"
+                class="nav-item nav-link">
+                <i class="fas fa-eye"></i> View Listing</a>
+            <a [routerLink]="'/dashboard/servers/' + guild.id + '/edit'" routerLinkActive="active"
+                class="nav-item nav-link">
+                <i class="fas fa-pencil-alt"></i> Edit</a>
+            <a [routerLink]="'/dashboard/servers/' + guild.id + '/log'" routerLinkActive="active"
+                class="nav-item nav-link">
+                <i class="fas fa-file-alt"></i> Log</a>
+            
+        <div class="category">Stats</div>
+            <a [routerLink]="'/dashboard/servers/' + guild.id + '/widget'" routerLinkActive="active"
+                class="nav-item nav-link">
+                <i class="fas fa-star"></i> Widget</a>
+        </div>
+        <div *ngIf="!guild.id" class="navbar-nav">
+            <a [routerLink]="['/docs/guidelines']" routerLinkActive="active"
+                class="nav-item nav-link">
+                <i class="fas fa-book"></i> Guidelines</a>
+        </div>
+    </div>
+    <div id="content">
+        <div *ngIf="loaded">
+            <ng-content></ng-content>
+            <div class="mt-5 pt-2"></div>
+        </div>
+        <div *ngIf="!loaded">
+            <spinner></spinner>
+        </div>
+    </div>
+</sidebar>

@@ -5,10 +5,9 @@
 export const environment = {
   production: false,
   endpoint: 'http://localhost:3000/api',
-  discordInvite: 'https://discord.gg/uDTgxyg',
-  version: 'v0.1.0b',
-  url: 'http://localhost:3000',
-  guildId: '531196495584821314'
+  discordInvite: 'https://discord.gg/nH9D8Jg',
+  version: 'v0.0.1a',
+  url: 'http://localhost:4200'
 };
 
 /*

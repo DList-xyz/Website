@@ -1,12 +1,12 @@
 <title>API</title>
-<description>Interact with DBots through HTTP requests.</description>
+<description>Interact with DList through HTTP requests.</description>
 <url>api</url>
 
 # API
-- Interact with DBots through HTTP requests
+- Interact with DList through HTTP requests
 
 ## Uses
-- Bot interaction for webapp
+- Guild interaction for webapp
 - XP Cards
 - Creating payment sessions
 - OAuth2 Discord authorization
@@ -25,14 +25,14 @@ Code | Description
 ---
 
 ## Rate Limiting
-DBots uses rate limiting to reduce API abuse.
+DList uses rate limiting to reduce API abuse.
 
 A maximum of *600 requests* can be sent *per 10 minutes*.
 
 ---
 
 ## Vote Webhook
-This is what is posted to a bots **Vote Webhook URL**, when a bot is voted for.
+This is what is posted to a guilds **Vote Webhook URL**, when a guild is voted for.
 
 ### Reponse
 
@@ -52,19 +52,19 @@ This is what is posted to a bots **Vote Webhook URL**, when a bot is voted for.
 
 ---
 
-## Bot 
+## Guild 
 
-## Bot Stats
-You can view the stats of a bot, including voting, guilds and more.
+## Guild Stats
+You can view the stats of a guild, including voting, guilds and more.
 
-**URL**: `https://dbots.co/api/bots/:id/stats`
+**URL**: `https://DList.co/api/guilds/:id/stats`
 
 ### Reponse
 
 **Schema**:
 ```ts
 {
-  general: { // general bot stats
+  general: { // general guild stats
     approvedAt: Date,
     guildCount: number,
     lastVoteAt: Date,
@@ -86,4 +86,4 @@ You can view the stats of a bot, including voting, guilds and more.
 }
 ```
 
-**Example**: `https://dbots.co/api/bots/525935335918665760/stats`
+**Example**: `https://DList.co/api/guilds/525935335918665760/stats`

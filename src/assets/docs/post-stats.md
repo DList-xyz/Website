@@ -1,21 +1,21 @@
 <title>Post Stats</title>
-<description>A guide to show how to post stats to the DBots API, in lots of popular programming languages.</description>
+<description>A guide to show how to post stats to the DList API, in lots of popular programming languages.</description>
 <url>post-stats</url>
 
 # Post Stats
-Here are examples of posting bot stats to the DBots API.
+Here are examples of posting guild stats to the DList API.
 
 ---
 
-## Finding Your Bot API Token
+## Finding Your Guild API Token
 
-Go to **Dashboard** -> **Your Bot** -> **API**
-or go to: `https://dbots.co/dashboard/bots/[yourBotId]/api`
-and replace `yourBotId` with your 18 character Discord Bot ID. 
+Go to **Dashboard** -> **Your Guild** -> **API**
+or go to: `https://DList.co/dashboard/guilds/[yourGuildId]/api`
+and replace `yourGuildId` with your 18 character Discord Guild ID. 
 
 ---
 
-## Bot Stats
+## Guild Stats
 
 Property  | Type
 :---------|:------------
@@ -27,13 +27,13 @@ guildCount | Number
 `Browser`
 
 ```
-const botId = '301520172194201602'; // your bot Snowflake ID
-const botAPIToken = 'b344b2d1-8fd0-4ef7-b7d8-1567d4e337c7'; // your bot API token
+const guildId = '301520172194201602'; // your guild Snowflake ID
+const guildAPIToken = 'b344b2d1-8fd0-4ef7-b7d8-1567d4e337c7'; // your guild API token
 
-fetch(`https://dbots.co/api/bots/${botId}/stats`, {
-  body: JSON.stringify({ guildCount: bot.guilds.cache.size }),
+fetch(`https://DList.co/api/guilds/${guildId}/stats`, {
+  body: JSON.stringify({ guildCount: guild.guilds.cache.size }),
   headers: {
-    'Authorization': botAPIToken,
+    'Authorization': guildAPIToken,
     'Content-Type': 'application/json'
   },
   method: 'POST',

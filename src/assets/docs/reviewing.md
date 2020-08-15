@@ -1,17 +1,17 @@
 <title>Reviewing</title>
-<description>Learn what the roles reviewing Discord bots are.</description>
+<description>Learn what the roles reviewing Discord guilds are.</description>
 <url>reviewing</url>
 
 # Reviewing
 
 ---
 
-Reviewers ensure bots follow the [Bot Guidelines](/bot-guidelines), which are high standards to ensure the quality of every user experience.
+Reviewers ensure guilds follow the [Guild Guidelines](/guild-guidelines), which are high standards to ensure the quality of every user experience.
 
 ### Reviewers Should
-- Identify strengths and weaknesses in bots, and let bot developers know
+- Identify strengths and weaknesses in guilds, and let guild developers know
 - Help users understand why they were approved/declined
-- Not take any bot developer feedback too personally
+- Not take any guild developer feedback too personally
 
 ---
 
@@ -20,8 +20,8 @@ Admins are responsible for keeping the site stable and running.
 They help keep users safe from any threats, and help maintain balance and stability.
 
 ## Reviewers
-Reviewers are responsible for maintaining high standards for bot listings.
-They help users know what to improve on, and accept/reject new bots.
+Reviewers are responsible for maintaining high standards for guild listings.
+They help users know what to improve on, and accept/reject new guilds.
 
 ---
 
@@ -29,5 +29,5 @@ They help users know what to improve on, and accept/reject new bots.
 
 Name | Permissions
 :----|:-----------
-Admin | Delete bots, Review new bots
-Reviewer | Review new bots
+Admin | Delete guilds, Review new guilds
+Reviewer | Review new guilds

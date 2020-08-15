@@ -9,9 +9,9 @@ import { SEOService } from '../services/seo.service';
 export class HomeComponent {
   constructor(seo: SEOService) {
     seo.setTags({
-      titleSuffix: 'DBots',
-      titlePrefix: 'Find Discord Bots',
-      description: 'Find the best bots to add to your servers. We have many different bots including music bots, moderation bots, chat bots and more.',
+      titleSuffix: 'DList',
+      titlePrefix: 'Find Discord Guilds',
+      description: 'Find the best guilds to add to your servers. We have many different guilds including music guilds, moderation guilds, chat guilds and more.',
       url: '/'
     });
   }

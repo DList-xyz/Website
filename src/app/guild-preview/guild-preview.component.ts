@@ -1,0 +1,74 @@
+import { Component, Input, OnInit } from '@angular/core';
+import marked from 'marked';
+import { UserService } from '../services/user.service';
+import { GuildsService } from '../services/guilds.service';
+import { Router } from '@angular/router';
+import { TagService } from '../services/tag.service';
+
+@Component({
+  selector: 'guild-preview',
+  templateUrl: './guild-preview.component.html',
+  styleUrls: ['./guild-preview.component.css']
+})
+export class GuildPreviewComponent implements OnInit {
+  @Input() preview = false;
+  ownerUser: any;
+
+  @Input() guild = {
+    approvedAt: null,
+    badges: [],
+    listing: {
+      body: '',
+      githubURL: 'https://github.com/theADAMJR',
+      invite: '',
+      overview: 'A good guild I guess...',
+      prefix: '/',
+      tags: ['music', 'moderation', 'utility'],
+      websiteURL: 'https://3pg.xyz'
+    },
+    stats: { guildCount: 100 },
+    ownerId: '218459216145285121',
+    votes: ['218459216145285121']
+  }
+
+  @Input() user = {
+    id: '',
+    displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    username: 'Guild User',
+    discriminator: '0000'
+  }
+
+  get markdown() {
+    return marked(this.guild.listing.body, { breaks: true })
+      .replace(/<a/g, '<a rel="nofollow" target="_blank" ');
+  }
+
+  get canManage() {
+    return this.userService.user?.id === this.guild.ownerId;
+  }
+
+  constructor(
+    public service: GuildsService,
+    private router: Router,
+    public tagService: TagService,
+    public userService: UserService) {}
+
+  async ngOnInit() {
+    await this.service.init();
+
+    this.ownerUser = await this.userService.getUser(this.guild.ownerId);
+  }
+
+  async delete() {
+    const shouldDelete = prompt(`Type 'DELETE' to confirm guild page deletion.`) === 'DELETE';
+    if (shouldDelete)
+      await this.service.deleteGuild(this.user.id);
+
+    this.router.navigate(['/dashboard']);
+  }
+
+  async addBadge(name: string) {
+    await this.service.addBadge(this.user.id, name);
+    await this.service.refreshGuilds();
+  }
+}

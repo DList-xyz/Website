@@ -180,7 +180,7 @@
     transform: translateX(-50px);
     top: 75%;
     pointer-events: none;
-    animation: rocket-movement 200s linear infinite both running
+    animation: rocket-movement 200s linear infinite guildh running
   }
   
   .object_earth {
@@ -205,7 +205,7 @@
   }
   
   .object_astronaut {
-    animation: rotate-astronaut 200s infinite linear both alternate
+    animation: rotate-astronaut 200s infinite linear guildh alternate
   }
   
   .box_astronaut {
@@ -214,7 +214,7 @@
     top: 60%;
     right: 20%;
     will-change: transform;
-    animation: move-astronaut 50s infinite linear both alternate
+    animation: move-astronaut 50s infinite linear guildh alternate
   }
   
   .image-404 {

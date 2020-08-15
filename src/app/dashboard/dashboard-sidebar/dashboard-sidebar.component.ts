@@ -12,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class DashboardSidebarComponent implements OnInit {
   @ViewChild('themeSelect') themeSelect: MatSelect;
 
-  defaultTheme = 'DISCORD';
+  defaultTheme = 'COSMOS';
 
   form = new FormGroup({
     theme: new FormControl(localStorage.getItem('theme') ?? this.defaultTheme)
@@ -23,7 +23,7 @@ export class DashboardSidebarComponent implements OnInit {
   constructor(
     private service: ThemeService,
     private userService: UserService) {
-    document.title = 'DBots - Dashboard';
+    document.title = 'DList - Dashboard';
   }
   ngOnInit() {
     this.service.updateTheme();

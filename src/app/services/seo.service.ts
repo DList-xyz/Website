@@ -21,17 +21,17 @@ export interface TypingName {
 @Injectable()
 export class SEOService {
   base = {
-    titlePrefix: 'Find Discord Bots',
-    titleSuffix: 'DBots',
-    url: 'https://dbots.co'
+    titlePrefix: 'Find Discord Guilds',
+    titleSuffix: 'DList',
+    url: 'https://DList.co'
   }
 
   constructor(
     private ngMeta: Meta,
     private ngTitle: Title
   ) {
-    this.keywords('discord bots, discord bot maker, discord bot commands, discord bot builder, discord bot list');
-    this.image('https://dbots.co/assets/img/logo.svg');
+    this.keywords('discord guilds, discord guild maker, discord guild commands, discord guild builder, discord guild list');
+    this.image('https://DList.co/assets/img/logo.svg');
   }
 
   get metaInstance() {

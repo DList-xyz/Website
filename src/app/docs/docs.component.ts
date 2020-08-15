@@ -63,7 +63,7 @@ export class DocsComponent implements OnInit {
   
       this.seo.setTags({
         description,
-        titlePrefix: 'DBots',
+        titlePrefix: 'DList',
         titleSuffix,
         url: `docs/${route}`
       });

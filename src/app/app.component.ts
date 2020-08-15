@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
-import { BotsService } from './services/bots.service';
+import { GuildsService } from './services/guilds.service';
 import { AuthService } from './services/auth.service';
 import { ThemeService } from './services/theme.service';
 
@@ -12,13 +12,13 @@ import { ThemeService } from './services/theme.service';
 export class AppComponent implements OnInit {
   constructor(
     private auth: AuthService,
-    private botService: BotsService,
+    private guildService: GuildsService,
     private themeService: ThemeService,
     private userService: UserService) {}
 
   async ngOnInit() {
     this.themeService.updateTheme();
-    await this.botService.init();
+    await this.guildService.init();
 
     this.auth.validateKey();
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { MatDrawer } from '@angular/material/sidenav';
-import { BotsService } from 'src/app/services/bots.service';
+import { GuildsService } from 'src/app/services/guilds.service';
 
 @Component({
   selector: 'sidebar',
@@ -12,11 +12,11 @@ export class SidebarComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
 
   constructor(
-    public botService: BotsService,
+    public guildService: GuildsService,
     public userService: UserService) {}
 
   async ngOnInit() {
-    await this.botService.init();
+    await this.guildService.init();
   }
 
   toggle() {

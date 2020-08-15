@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import pluginDataLabels from 'chartjs-plugin-datalabels';
-import { BotsService } from 'src/app/services/bots.service';
+import { GuildsService } from 'src/app/services/guilds.service';
 
 @Component({
   selector: 'votes-widget',
@@ -31,10 +31,10 @@ export class VotesWidgetComponent implements OnInit {
 
   barChartData: ChartDataSets[] = [];
 
-  constructor(private botsService: BotsService) {}
+  constructor(private guildsService: GuildsService) {}
     
   async ngOnInit() {
-    this.stats = await this.botsService.getStats(this.id);
+    this.stats = await this.guildsService.getStats(this.id);
 
     this.barChartLabels = this.buildLabels();
     this.barChartData = this.buildDataSets();

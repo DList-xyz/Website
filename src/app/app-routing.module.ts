@@ -7,17 +7,16 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardAuthGuard } from './guards/dashboard-auth.guard';
 import { DocsComponent } from './docs/docs.component';
-import { AddBotComponent } from './dashboard/bots/add-bot/add-bot.component';
-import { SearchWrapperComponent } from './bots/search-wrapper/search-wrapper.component';
-import { BotAuthGuard } from './guards/bot-auth.guard';
-import { BotPageComponent } from './bot-page/bot-page.component';
-import { BotComponent } from './dashboard/bots/bot/bot.component';
-import { BotVoteComponent } from './bot-vote/bot-vote.component';
+import { AddGuildComponent } from './dashboard/guilds/add-guild/add-guild.component';
+import { SearchWrapperComponent } from './guilds/search-wrapper/search-wrapper.component';
+import { GuildAuthGuard } from './guards/guild-auth.guard';
+import { GuildPageComponent } from './guild-page/guild-page.component';
+import { GuildComponent } from './dashboard/guilds/guild/guild.component';
+import { GuildVoteComponent } from './guild-vote/guild-vote.component';
 import { LogoutComponent } from './logout/logout.component';
-import { EditBotComponent } from './dashboard/bots/edit-bot/edit-bot.component';
+import { EditGuildComponent } from './dashboard/guilds/edit-guild/edit-guild.component';
 import { LogModuleComponent } from './dashboard/log-module/log-module.component';
-import { APIComponent } from './dashboard/api/api.component';
-import { BotWidgetComponent } from './dashboard/bot-widget/bot-widget.component';
+import { GuildWidgetComponent } from './dashboard/guild-widget/guild-widget.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,25 +30,22 @@ const routes: Routes = [
   { path: 'search', component: SearchWrapperComponent },
   { path: 'tags/:tag', component: SearchWrapperComponent },
 
-  { path: 'bots/:id', component: BotPageComponent },
-  { path: 'bots/:id/vote', component: BotVoteComponent },
+  { path: 'servers/:id', component: GuildPageComponent },
+  { path: 'servers/:id/vote', component: GuildVoteComponent },
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardAuthGuard] },
   
-  { path: 'dashboard/bots/new', component: AddBotComponent, canActivate: [DashboardAuthGuard] },
-  { path: 'dashboard/bots/:id', component: BotComponent, canActivate: [BotAuthGuard] },
-  { path: 'dashboard/bots/:id/api', component: APIComponent, canActivate: [BotAuthGuard] },
-  { path: 'dashboard/bots/:id/edit', component: EditBotComponent, canActivate: [BotAuthGuard] },
-  { path: 'dashboard/bots/:id/widget', component: BotWidgetComponent, canActivate: [BotAuthGuard] },
-  { path: 'dashboard/bots/:id/log', component: LogModuleComponent, canActivate: [BotAuthGuard] },
+  { path: 'dashboard/servers/new', component: AddGuildComponent, canActivate: [DashboardAuthGuard] },
+  { path: 'dashboard/servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },
+  { path: 'dashboard/servers/:id/edit', component: EditGuildComponent, canActivate: [GuildAuthGuard] },
+  { path: 'dashboard/servers/:id/widget', component: GuildWidgetComponent, canActivate: [GuildAuthGuard] },
+  { path: 'dashboard/servers/:id/log', component: LogModuleComponent, canActivate: [GuildAuthGuard] },
 
   { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-  })],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -1,25 +1,25 @@
 <title>Widget</title>
-<description>Cool widgets that you can use to show off your bot, and get more votes.</description>
+<description>Cool widgets that you can use to show off your guild, and get more votes.</description>
 <url>widget</url>
 
 # Widget
-Learn how to use cool widgets that you can use to show off your bot, and get more votes.
+Learn how to use cool widgets that you can use to show off your guild, and get more votes.
 
-## Get A Bot Widget
-**URL**: `https://dbots.co/api/bots/[botId]/widget`
+## Get A Guild Widget
+**URL**: `https://DList.co/api/guilds/[guildId]/widget`
 
 **HTML Widget Syntax**:
 ```
-<a href="https://dbots.co/bots/yourBotId">
-  <img src="https://dbots.co/api/bots/[botId]/widget" alt="View on DBots">
+<a href="https://DList.co/guilds/yourGuildId">
+  <img src="https://DList.co/api/guilds/[guildId]/widget" alt="View on DList">
 </a>
 ```
 
-Replace `[botId]` with the ID of a bot.
-Using a widget, on your home page, can also help get your bot [featured](/docs/get-featured).
+Replace `[guildId]` with the ID of a guild.
+Using a widget, on your home page, can also help get your guild [featured](/docs/get-featured).
 
 **Example**
-![Bot Widget Example](/api/bots/525935335918665760/widget)
+![Guild Widget Example](/api/guilds/525935335918665760/widget)
 
 ## Sizes
 **Large** (default)

@@ -101,7 +101,7 @@
   .rocket-button .animation {
     left: 0;
     right: 0;
-    bottom: 0;
+    guildtom: 0;
     height: 120px;
     pointer-events: none;
     overflow: hidden;
@@ -117,7 +117,7 @@
     transform: scale(0.7);
     border-radius: 50%;
     position: absolute;
-    bottom: var(--b, -20px);
+    guildtom: var(--b, -20px);
     left: var(--l, -12px);
     width: var(--s, 32px);
     height: var(--s, 32px);
@@ -289,7 +289,7 @@
   body {
     min-height: 100vh;
     display: flex;
-    font-family: "Roboto", Arial;
+    font-family: "Roguildo", Arial;
     justify-content: center;
     align-items: center;
     background: #F7F8FF;
@@ -298,7 +298,7 @@
     position: fixed;
     display: block;
     right: 20px;
-    bottom: 20px;
+    guildtom: 20px;
   }
   body .dribbble img {
     display: block;
