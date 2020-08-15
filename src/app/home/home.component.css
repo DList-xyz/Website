@@ -1,0 +1,31 @@
+header {
+    background-color: var(--background-secondary);
+}
+
+.robot {
+    max-width: 192px;
+    margin-bottom: 5px;
+}
+
+p:not(.lead) {
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+mat-chip {
+    cursor: pointer;
+    background-color: var(--primary) !important;
+}
+
+.more {
+    background-color: var(--tertiary) !important;    
+}
+
+#content {
+    min-height: 40vh;
+}
+
+#searchButton {
+    margin-left: 5px;
+    height: 64px;
+}

@@ -1,0 +1,13 @@
+<footer>
+    <waves></waves>
+    <div class="content d-flex flex-column justify-content-end">
+        <span>&copy; 2020 DBots
+            <span class="cursor-pointer"
+                class="float-right">
+                <a [href]="statusURL">Status</a>
+                <span class="text-muted px-1">|</span>
+                <span class="cursor-pointer" routerLink="/docs/changelog" [fragment]="anchorVersion">{{ version }}</span>
+            </span>
+        </span>
+    </div>
+</footer>
