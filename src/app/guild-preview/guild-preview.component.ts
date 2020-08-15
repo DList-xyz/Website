@@ -14,7 +14,7 @@ export class GuildPreviewComponent implements OnInit {
   @Input() preview = false;
   ownerUser: any;
 
-  @Input() guild = {
+  @Input() savedGuild = {
     approvedAt: null,
     badges: [],
     listing: {
@@ -31,7 +31,7 @@ export class GuildPreviewComponent implements OnInit {
     votes: ['218459216145285121']
   }
 
-  @Input() user = {
+  @Input() guild = {
     id: '',
     displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
     username: 'Guild User',
@@ -39,12 +39,12 @@ export class GuildPreviewComponent implements OnInit {
   }
 
   get markdown() {
-    return marked(this.guild.listing.body, { breaks: true })
+    return marked(this.savedGuild.listing.body, { breaks: true })
       .replace(/<a/g, '<a rel="nofollow" target="_blank" ');
   }
 
   get canManage() {
-    return this.userService.user?.id === this.guild.ownerId;
+    return this.userService.user?.id === this.savedGuild.ownerId;
   }
 
   constructor(
@@ -56,19 +56,19 @@ export class GuildPreviewComponent implements OnInit {
   async ngOnInit() {
     await this.service.init();
 
-    this.ownerUser = await this.userService.getUser(this.guild.ownerId);
+    this.ownerUser = await this.userService.getUser(this.savedGuild.ownerId);
   }
 
   async delete() {
     const shouldDelete = prompt(`Type 'DELETE' to confirm guild page deletion.`) === 'DELETE';
     if (shouldDelete)
-      await this.service.deleteGuild(this.user.id);
+      await this.service.deleteGuild(this.guild.id);
 
     this.router.navigate(['/dashboard']);
   }
 
   async addBadge(name: string) {
-    await this.service.addBadge(this.user.id, name);
+    await this.service.addBadge(this.guild.id, name);
     await this.service.refreshGuilds();
   }
 }

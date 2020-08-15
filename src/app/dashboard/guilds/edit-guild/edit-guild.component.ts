@@ -10,7 +10,7 @@ import { SEOService } from 'src/app/services/seo.service';
 })
 export class EditGuildComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
 
   get id() { return this.route.snapshot.paramMap.get('id') }
 
@@ -22,12 +22,12 @@ export class EditGuildComponent implements OnInit {
     async ngOnInit() {
       await this.service.init();
       
-      this.guild = this.service.getSavedGuild(this.id);
-      this.user = this.service.getGuild(this.id);
+      this.savedGuild = this.service.getSavedGuild(this.id);
+      this.guild = this.service.getGuild(this.id);
       
       this.seo.setTags({
         description: '',
-        titlePrefix: this.user.tag,
+        titlePrefix: this.guild.name,
         titleSuffix: 'Edit',
         url: `dashboard/guilds/${this.id}`
       });

@@ -32,20 +32,17 @@ export class AddGuildComponent implements AfterViewInit {
     tags: new FormControl([], [ Validators.maxLength(5) ])
   });
 
-  @Input() user = {
+  @Input() guild = {
     id: '',
-    displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
-    presence: { status: 'ONLINE' },
-    tag: 'New Guild#0001',
-    username: 'New Guild'
+    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    name: 'New Guild'
   }
 
-  @Input() guild = {
+  @Input() savedGuild = {
     listing: {
       body: `Add something \`meaningful\` and **useful** here, to help your guild users.`,
       overview: 'Add guild summary here.'
     },
-    guildCount: 100,
     votes: toIterable(100)
   };
   
@@ -58,8 +55,8 @@ export class AddGuildComponent implements AfterViewInit {
     public tagService: TagService,
     private userService: UserService) {
       seo.setTags({
-        description: 'Add a guild to the guild list with this form.',
-        titlePrefix: 'Add Guild',
+        description: 'Add a server to the server list with this form.',
+        titlePrefix: 'Add Server',
         titleSuffix: 'Dashboard',
         url: 'dashboard/guilds/new'
       });
@@ -82,11 +79,11 @@ export class AddGuildComponent implements AfterViewInit {
   }
 
   private initFormValue() {
-    for (const key in this.guild.listing)
+    for (const key in this.savedGuild.listing)
       this.form.controls[key]
-        ?.setValue(this.guild.listing[key]);
+        ?.setValue(this.savedGuild.listing[key]);
     
-    this.editor.value(this.guild.listing.body);
+    this.editor.value(this.savedGuild.listing.body);
 
     const draft = localStorage.getItem('guildListingDraft');
     
@@ -131,7 +128,7 @@ export class AddGuildComponent implements AfterViewInit {
 
   private updateDraft() {
     localStorage.setItem('guildListingDraft', JSON.stringify(this.form.value));   
-    this.guild.listing = this.form.value; 
+    this.savedGuild.listing = this.form.value; 
   }
   
   filterTags(filter: string): void {

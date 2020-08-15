@@ -2,6 +2,7 @@ import { Component,  Input, OnInit, AfterViewInit } from '@angular/core';
 import { GuildsService } from '../services/guilds.service';
 import { kebabToTitleCase } from '../utils';
 import { Tag } from '../services/tag.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'guilds',
@@ -9,23 +10,26 @@ import { Tag } from '../services/tag.service';
   styleUrls: ['./guilds.component.css']
 })
 export class GuildsComponent implements OnInit, AfterViewInit {
+  @Input() tag: Tag;
+
   page = 1;
   size = 8;
 
-  title = 'Top';
-  icon = 'fas fa-roguild';
-  description = 'The highest rated guilds this week.';
+  title = 'Recently Bumped';
+  icon = 'fas fa-fist-raised';
+  description = 'Servers that were recently bumped.';
   query = '';
 
   guilds = [];
   savedGuilds = [];
-  @Input() tag: Tag;
 
   initialized = false;
 
   get lastPage() { return Math.ceil(this.guilds.length / this.size); }
 
-  constructor(public service: GuildsService) {}
+  constructor(
+    public service: GuildsService,
+    private router: Router) {}
 
   async ngOnInit() {
     await this.service.init();
@@ -82,21 +86,23 @@ export class GuildsComponent implements OnInit, AfterViewInit {
   }
 
   private setDefaultLayout() {
-    this.title = 'Top';
-    this.icon = 'fas fa-roguild';
-    this.description = 'The highest rated guilds this week.'
+    this.title = 'Recently Bumped';
+    this.icon = 'fas fa-fist-raised';
+    this.description = 'Servers that were recently bumped.'
 
     this.loadGuilds();
+    
+    this.router.navigate(['/']);
   }
 
   private setSearchLayout() {
     this.title = `Results for '${this.query}'`;
-    this.description = `Find guilds similar to '${this.query}'.`
+    this.description = `Find servers similar to '${this.query}'.`
     this.icon = 'fas fa-search';
   }
 
   setTagLayout(tag: Tag) {
-    this.title = `${kebabToTitleCase(tag.name)} Guilds`;
+    this.title = `${kebabToTitleCase(tag.name)} Servers`;
     this.icon = tag.icon;
     this.description = tag.description;
     this.tag = tag;

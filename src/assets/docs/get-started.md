@@ -3,21 +3,21 @@
 <url>get-started</url>
 
 # Get Started
-This guide will show you how to get started with DList, and add a guild.
+This guide will show you how to get started with DList, and add a server.
 
 ## Step 1
 **Join the DList Server**
-Make sure you are in the [DList Discord Server](/server) to enable you to add a guild.
+Make sure you are in the [DList Discord Server](/server) to enable you to add a server.
 
 ![Join the DList Server](assets/docs/img/get-started/join-the-server.png)
 
 ## Step 2
-**Add a Guild**
+**Add a Server**
 [Login]([https://DList.co/login) to the DList Dashboard to your server.
 This will redirect you to a Discord oauth link which should auto login to DList, with your currently logged-in Discord account.
-After logging into the dashboard, you can [add a guild](/dashboard/guilds/new) by clicking on the '+' icon.
+After logging into the dashboard, you can [add a server](/dashboard/servers/new) by clicking on the '+' icon.
 
-![Add a Guild](assets/docs/img/get-started/add-a-guild.png)
+![Add a Server](assets/docs/img/get-started/add-a-guild.png)
 
 ## Step 3
 **Fill in the Form and Post**

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GuildVoteComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
 
   get widgetURL() { return `${environment.endpoint}/guilds/${this.id}/widget?size=medium`; }
   get id() { return this.route.snapshot.paramMap.get('id') }
@@ -27,14 +27,14 @@ export class GuildVoteComponent implements OnInit {
   async ngOnInit() {
     await this.service.init();
 
-    this.user = this.service.getGuild(this.id);
-    this.guild = this.service.getSavedGuild(this.id);
-    if (!this.user || !this.guild)
+    this.guild = this.service.getGuild(this.id);
+    this.savedGuild = this.service.getSavedGuild(this.id);
+    if (!this.savedGuild || !this.guild)
       return this.router.navigate(['']);
 
     this.seo.setTags({
-      description: this.guild.listing.overview,
-      titlePrefix: `Vote for ${this.user.username}`,
+      description: this.savedGuild.listing.overview,
+      titlePrefix: `Vote for ${this.guild.name}`,
       titleSuffix: 'DList',
       url: `guilds/${this.id}`
     });
@@ -47,19 +47,5 @@ export class GuildVoteComponent implements OnInit {
     await this.service.refreshGuilds();
 
     return this.router.navigate(['/guilds/' + this.id]);
-  }
-
-  async remind() {
-    await Notification.requestPermission();
-
-    new Notification(`DList - Vote Reminder`, {
-      badge: `${environment.url}/guilds/${this.id}`,
-      body: `You can vote again for ${this.user.username}.`,
-      icon: this.user.displayAvatarURL,
-      image: `${environment.url}/assets/img/logo.png`,
-      renotify: true,
-      timestamp: new Date().getTime() + (12 * 60 * 60 * 1000),
-      tag: 'Vote Reminder'
-    });
   }
 }

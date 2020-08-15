@@ -1,11 +1,9 @@
-<header class="jumguildron mb-0">
+<header class="jumbotron mb-0">
     <div class="container">
-        <img [src]="user.displayAvatarURL">
-        <h1>{{ user.username }}<span class="text-muted">#{{ user.discriminator }}</span></h1>
+        <img [src]="guild.iconURL">
+        <h1>{{ guild.name }}</h1>
         <div>
-            <span *ngIf="guild.stats?.guildCount"><i class="fas fa-server" matTooltip="Servers"></i> {{ guild.stats?.guildCount | number }}</span>
-            <span *ngIf="!guild.stats?.guildCount"><i class="fas fa-server" matTooltip="Servers"></i> N/A</span>
-            <span class="pl-3"><i class="fas fa-chevron-circle-up" matTooltip="Votes"></i> {{ guild.votes.length | number }}</span>
+            <span class="pl-3"><i class="fas fa-chevron-circle-up" matTooltip="Votes"></i> {{ savedGuild.votes.length | number }}</span>
             <span class="border border-dark py-1 mx-4"></span>
             <span>
                 <span *ngIf="guild.approvedAt"
@@ -21,26 +19,13 @@
             </span>
         </div>
         <div>
-            <span class="text-muted" role="doc-subtitle">{{ guild.listing.overview }}</span>
+            <span class="text-muted" role="doc-subtitle">{{ savedGuild.listing.overview }}</span>
         </div>
     </div>
 </header>
 <waves [inverted]="true"></waves>
 
 <div class="container mt-3 py-1">
-    <span class="links">
-        <span class="mx-2 prefix">
-            <strong>Prefix</strong>: <code>{{ guild.listing.prefix }}</code>
-        </span>
-        <span *ngIf="guild.listing.websiteURL"
-            class="mx-2">
-            <a [href]="guild.listing.websiteURL" rel="nofollow" mat-button><i class="fas fa-globe"></i> Website</a>
-        </span>
-        <span *ngIf="guild.listing.githubURL"
-            class="mx-2">
-            <a [href]="guild.listing.githubURL" rel="nofollow" mat-button><i class="fab fa-github"></i> GitHub</a>
-        </span>
-    </span>
     <span id="buttons" *ngIf="!preview"
         class="float-right">
         <span *ngIf="userService.isAdmin"
@@ -58,11 +43,11 @@
             (click)="delete()"
             id="delete" class="mr-2" color="danger" mat-button><i class="fas fa-trash"></i> Delete</button>
         <button *ngIf="canManage"
-            [routerLink]="['/dashboard/guilds/' + user.id +'/edit']"
+            [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
             class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
-        <a [href]="guild.listing.invite" rel="nofollow"
+        <a [href]="savedGuild.listing.invite" rel="nofollow"
             class="rounded-lg bg-primary mr-2" mat-button><i class="fas fa-plus-circle"></i> Add</a>
-        <button [routerLink]="['/guilds/' + user.id +'/vote']"
+        <button [routerLink]="['/servers/' + guild.id +'/vote']"
             class="bg-secondary" mat-button><i class="fas fa-chevron-circle-up"></i> Vote</button>
     </span>
     <hr>
@@ -75,7 +60,7 @@
     <div class="row">
         <div class="col-6">
             <mat-chip-list class="float-left">
-                <mat-chip *ngFor="let tagName of guild.listing.tags"
+                <mat-chip *ngFor="let tagName of savedGuild.listing.tags"
                     class="cursor-pointer"
                     [routerLink]="['/tags/', tagName]">{{ tagName | kebabToTitleCase }}
                     <i [class]="tagService.getTag(tagName)?.icon" class="ml-1" aria-hidden="true"></i>

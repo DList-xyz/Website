@@ -12,7 +12,7 @@
 }
 
 #doc {
-  margin-guildtom: 50px;
+  margin-bottom: 50px;
 }
 
 #doc .alert-danger {
@@ -26,10 +26,14 @@
 #doc pre {
   padding: 15px;
 
-  border-left: 5px solid var(--secondary);
+  border-left: 5px solid var(--tertiary);
   border-radius: 5px;
   background-color: var(--background-secondary);
 }
 #doc pre code {
-  color: var(--secondary);
+  color: var(--tertiary);
+}
+
+#doc code {
+  color: var(--tertiary)
 }

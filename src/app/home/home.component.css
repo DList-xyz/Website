@@ -2,9 +2,9 @@ header {
     background-color: var(--background-secondary);
 }
 
-.roguild {
+.server {
     max-width: 192px;
-    margin-guildtom: 5px;
+    margin-bottom: 5px;
 }
 
 p:not(.lead) {

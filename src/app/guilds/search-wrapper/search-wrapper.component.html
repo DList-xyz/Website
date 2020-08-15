@@ -1,6 +1,6 @@
 <header>
     <navbar></navbar>
-    <div class="container jumguildron mb-0">
+    <div class="container jumbotron mb-0">
         <h1 class="text-center">Find the Best Discord Servers</h1>
         <div class="d-flex justify-content-center">
             <mat-form-field appearance="outline">
@@ -16,10 +16,13 @@
         <div class="d-flex justify-content-center">
             <mat-chip-list>
                 <mat-chip>
-                    <a href="#top">Top <i class="pl-1 fas fa-trophy"></i></a>
-                    </mat-chip>
+                    <a href="#bumped">Recent <i class="pl-1 fas fa-fist-raised"></i></a>
+                </mat-chip>
                 <mat-chip>
-                    <a href="#new">Featured <i class="pl-1 fas fa-star"></i></a>
+                    <a href="#top">Top <i class="pl-1 fas fa-trophy"></i></a>
+                </mat-chip>
+                <mat-chip>
+                    <a href="#featured">Featured <i class="pl-1 fas fa-star"></i></a>
                 </mat-chip>
                 <mat-chip class="more"><i class="fa fa-plus" aria-hidden="true"></i></mat-chip>
             </mat-chip-list>
@@ -29,20 +32,20 @@
 <waves inverted="true"></waves>
 
 <div id="content" class="container">
-    <guilds id="top" #guilds></guilds>
+    <guilds id="bumped" #guilds></guilds>
 
     <div *ngIf="!guilds.query && !guilds.tag">
         <hr>
-        
-        <guilds id="new" [tag]="{
-            description: 'New servers with the most votes.',
-            icon: 'fas fa-chevron-up',
-            name: 'new'
+
+        <guilds id="top" [tag]="{
+            description: 'Top rated servers this week.',
+            icon: 'fas fa-star',
+            name: 'top'
         }"></guilds>
 
         <hr>
 
-        <guilds [tag]="{
+        <guilds id="featured" [tag]="{
             description: 'Featured servers selected by DList.',
             icon: 'fas fa-star',
             name: 'featured'
@@ -61,7 +64,7 @@
 
         <div class="d-flex justify-content-center mt-5 mb-2">
             <div class="rounded-lg btn-gradient">
-                <button routerLink="/tags/customizable"
+                <button routerLink="/tags/community"
                     class="btn-gradient py-2 px-4" mat-button>View More</button>
             </div>
         </div>

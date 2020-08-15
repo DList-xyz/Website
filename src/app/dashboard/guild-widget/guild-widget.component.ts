@@ -12,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class GuildWidgetComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
 
   form = new FormGroup({
     size: new FormControl('large')
@@ -29,12 +29,12 @@ export class GuildWidgetComponent implements OnInit {
     async ngOnInit() {
       await this.service.init();
       
-      this.guild = this.service.getSavedGuild(this.id);
-      this.user = this.service.getGuild(this.id);
+      this.savedGuild = this.service.getSavedGuild(this.id);
+      this.guild = this.service.getGuild(this.id);
       
       this.seo.setTags({
         description: '',
-        titlePrefix: this.user.tag,
+        titlePrefix: this.guild.name,
         titleSuffix: 'Dashboard',
         url: `dashboard/guilds/${this.id}`
       });

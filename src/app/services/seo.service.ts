@@ -23,7 +23,7 @@ export class SEOService {
   base = {
     titlePrefix: 'Find Discord Guilds',
     titleSuffix: 'DList',
-    url: 'https://DList.co'
+    url: 'https://dlist.xyz'
   }
 
   constructor(
@@ -31,7 +31,7 @@ export class SEOService {
     private ngTitle: Title
   ) {
     this.keywords('discord guilds, discord guild maker, discord guild commands, discord guild builder, discord guild list');
-    this.image('https://DList.co/assets/img/logo.svg');
+    this.image('https://dlist.xyz/assets/img/logo.svg');
   }
 
   get metaInstance() {

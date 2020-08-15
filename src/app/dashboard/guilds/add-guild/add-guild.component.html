@@ -1,11 +1,10 @@
 <guild-sidebar
     [guild]="guild"
-    [loaded]="guild && user"
-    [user]="user">
+    [loaded]="savedGuild && guild">
     <div [hidden]="preview" class="container">
         <div class="container">
                 <div class="d-flex justify-content-between">
-                    <h1 [textContent]="editing ? 'Edit ' + user?.username : 'Add Server'"
+                    <h1 [textContent]="editing ? 'Edit ' + guild.name : 'Add Server'"
                         class="display-4">Add Server</h1>
                     <button id="previewButton" (click)="preview = true"
                         class="rounded-lg mt-3" type="button" color="success" mat-button>
@@ -122,7 +121,7 @@
                 <p>This is what your guild card will look like to new users.</p>
                 <div class="d-flex justify-content-center mb-5">
                     <guild-card class="mt-5"
-                        [user]="user"
+                        [guild]="guild"
                         [guild]="guild"></guild-card>
                 </div>
 

@@ -4,8 +4,8 @@
     <div class="row">
         <div *ngFor="let savedGuild of paginate(savedGuilds)"
             class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
-            <guild-card [guild]="savedGuild"
-                [user]="service.getGuild(savedGuild._id)"
+            <guild-card [savedGuild]="savedGuild"
+                [guild]="service.getGuild(savedGuild._id)"
                 class="m-3"></guild-card>
         </div>
         <div id="paginator" class="col-12">

@@ -1,16 +1,15 @@
 <guild-sidebar [guild]="guild"
-    [loaded]="guild && user"
-    [user]="user">
-  <div *ngIf="user && guild"
+    [loaded]="savedGuild && guild">
+  <div *ngIf="savedGuild && guild"
     class="container">
     <header>
-        <h1 class="display-4">{{ user.username }} Widget</h1>
+        <h1 class="display-4">{{ guild.name }} Widget</h1>
         <hr class="my-2">
     </header>
     <div class="d-flex justify-content-center">
       <div>
         <a [href]="'/servers/' + id">
-          <img [src]="widgetURL" [alt]="user.username">
+          <img [src]="widgetURL" [alt]="guild.name">
         </a>
         <form #f="ngForm" [formGroup]="form">
           <mat-form-field class="ml-5 mt-2" appearance="outline">
@@ -24,7 +23,7 @@
         </form>
       </div>
     </div>
-    <pre><code>&lt;a href="https://dlist.co/servers/{{ user.id }}"&gt;
+    <pre><code>&lt;a href="https://dlist.xyz/servers/{{ guild.id }}"&gt;
   &lt;img src="{{ widgetURL }}" alt="View on DList"&gt;
 &lt;a&gt;</code></pre>
   </div>

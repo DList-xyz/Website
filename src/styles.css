@@ -27,11 +27,11 @@ body, mat-sidenav-content {
 
 footer {
     position: fixed;
-    guildtom: 0;
+    bottom: 0;
     width: 100%;
     
     padding: 5px;
-    padding-guildtom: 0px;
+    padding-bottom: 0px;
 }
 
 footer p {
@@ -52,7 +52,7 @@ table {
     max-width: 96px;
     border-radius: 50%;
 
-    padding-guildtom: 5px;
+    padding-bottom: 5px;
 }
 
 .side-nav .header {
@@ -67,7 +67,7 @@ table.dataTable tbody tr {
     background-color: inherit;
 }
 
-.jumguildron {
+.jumbotron {
     background-color: transparent;
 }
 
@@ -112,7 +112,7 @@ mat-chip a {
 {
     border-radius: 10px;
     background-image: -webkit-gradient(linear,
-        left guildtom,
+        left bottom,
         left top,
         color-stop(0.72, var(--primary)),
         color-stop(0.86, var(--secondary)));
@@ -205,7 +205,7 @@ mat-paginator {
 /* guild preview */
 
 #markdown p {
-  margin-guildtom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 #markdown code {

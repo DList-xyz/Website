@@ -6,4 +6,4 @@
 The different badges that you can earn with server listings.
 
 ## <i class="fas fa-star text-warning"></i> Featured
-Your guild is currently featured.
+Your server is currently featured.

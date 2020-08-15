@@ -1,15 +1,15 @@
 <navbar></navbar>
 
-<div *ngIf="guild && user">
-  <div *ngIf="!guild.approvedAt"
+<div *ngIf="savedGuild && guild">
+  <div *ngIf="savedGuild.flags.length > 0"
     class="alert alert-info">
-    <i class="fas fa-info-circle" aria-hidden="true"></i> Your guild will visible on the guild list if it is approved.
+    <i class="fas fa-info-circle" aria-hidden="true"></i> Your server is flagged and needs to be reviewed to reappear on the list.
   </div>
-  <guild-preview *ngIf="guild.listing"
+  <guild-preview *ngIf="savedGuild.listing"
     [guild]="guild"
-    [user]="user"></guild-preview>
+    [savedGuild]="savedGuild"></guild-preview>
 
-    <div *ngIf="!guild.approvedAt
+    <div *ngIf="savedGuild.flags.length > 0
       && (userService.savedUser?.role === 'admin'
       || userService.savedUser?.role === 'reviewer')"
       id="review"
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div *ngIf="!guild || !user"
+<div *ngIf="!savedGuild || !guild"
   class="container">
   <spinner></spinner>
 </div>

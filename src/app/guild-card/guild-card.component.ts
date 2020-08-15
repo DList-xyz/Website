@@ -7,27 +7,24 @@ import { kebabToTitleCase } from '../utils';
   styleUrls: ['./guild-card.component.css']
 })
 export class GuildCardComponent {
-  @Input() user = {
+  @Input() guild = {
     id: '',
-    displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
-    presence: { status: 'online' },
-    username: 'Username'
+    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    name: 'Server'
   }
 
-  @Input() guild = {
+  @Input() savedGuild = {
     listing: {
-      invite: '',
-      overview: 'A good guild I guess...',
-      tags: ['Economy', 'Moderation']
-    },
-    stats: {
-      guildCount: 10,
+      body: '',
+      overview: 'A good server I guess...',
+      language: 'en',
+      tags: ['Community']
     },
     votes: ['218459216145285121']
   }
 
   get cleanTags() {
-    return this.guild.listing.tags
+    return this.savedGuild.listing.tags
       ?.map(t => kebabToTitleCase(t))
       .slice(0, 3)
       .join(', ');

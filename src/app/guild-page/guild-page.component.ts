@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class GuildPageComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
 
   get id() { return this.route.snapshot.paramMap.get('id') }
 
@@ -25,14 +25,14 @@ export class GuildPageComponent implements OnInit {
   async ngOnInit() {
     await this.service.init();
 
-    this.user = this.service.getGuild(this.id);
-    this.guild = this.service.getSavedGuild(this.id);
-    if (!this.user || !this.guild)
+    this.guild = this.service.getGuild(this.id);
+    this.savedGuild = this.service.getSavedGuild(this.id);
+    if (!this.savedGuild || !this.guild)
       return this.router.navigate(['']);
 
     this.seo.setTags({
-      description: this.guild.listing.overview,
-      titlePrefix: this.user.username,
+      description: this.savedGuild.listing.overview,
+      titlePrefix: this.guild.name,
       titleSuffix: 'DList',
       url: `guilds/${this.id}`
     });

@@ -10,7 +10,7 @@ import { SEOService } from 'src/app/services/seo.service';
 })
 export class GuildComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
   stats: any;
 
   constructor(
@@ -25,16 +25,16 @@ export class GuildComponent implements OnInit {
        
       this.guild = await this.guildsService.getSavedGuild(id);
       this.stats = await this.guildsService.getStats(id);
-      this.user = await this.guildsService.getGuild(id);
+      this.savedGuild = await this.guildsService.getGuild(id);
   
       this.seo.setTags({
-        description: `Overview of ${this.user.tag} guild listing.`,
-        titlePrefix: this.user.tag,
+        description: `Overview of ${this.guild.name} Server listing.`,
+        titlePrefix: this.guild.name,
         titleSuffix: 'Overview',
-        url: `dashboard/guilds/${this.user.id}`
+        url: `dashboard/guilds/${this.guild.id}`
       });
   
-      if (!this.guild || !this.user)
+      if (!this.guild || !this.savedGuild)
         this.router.navigate(['/dashboard']);
     });
   }

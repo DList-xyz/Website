@@ -9,7 +9,7 @@ p {
     margin: 0;
 }
 .card-text {
-    margin-guildtom: 15px;
+    margin-bottom: 15px;
     height: 200px;
 }
 
@@ -38,7 +38,7 @@ p {
 
 .stats {
     margin: 0;
-    margin-guildtom: 5px;
+    margin-bottom: 5px;
 }
 .card-body {
     padding-top: 10px;

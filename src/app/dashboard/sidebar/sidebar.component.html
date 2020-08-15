@@ -7,15 +7,15 @@
                 </div>
                 <hr class="guild-seperator">
             </div>
-            <div *ngFor="let guild of guildService.userGuilds" [routerLink]="['/dashboard/guilds/' + guild.id]"
+            <div *ngFor="let guild of guildService.userGuilds" [routerLink]="['/dashboard/servers/' + guild.id]"
                 class="guild-icon">
                 <img *ngIf="guild"
-                    [src]="guild.displayAvatarURL"
-                    [alt]="guild.username">
+                    [src]="guild.iconURL"
+                    [alt]="guild.name">
             </div>
-            <div routerLink="/dashboard/guilds/new" 
+            <div routerLink="/dashboard/servers/new" 
                 class="guild-icon invite"
-                matTooltip="Add a Guild">
+                matTooltip="Add a Server">
                 <span class="add-guild pt-0 d-flex justify-content-center flex-column">+</span>
             </div>
         </div>

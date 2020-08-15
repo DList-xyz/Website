@@ -14,7 +14,7 @@ import { SEOService } from 'src/app/services/seo.service';
 })
 export class LogModuleComponent implements OnInit {
   guild: any;
-  user: any;
+  savedGuild: any;
 
   members: any[];
 
@@ -35,12 +35,12 @@ export class LogModuleComponent implements OnInit {
     await this.guildService.init();
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.guild = this.guildService.getSavedGuild(id);
-    this.user = this.guildService.getGuild(id);
+    this.savedGuild = this.guildService.getSavedGuild(id);
+    this.guild = this.guildService.getGuild(id);
 
     this.seo.setTags({
       titlePrefix: 'DList',
-      titleSuffix: `${this.user.username} Logs`,
+      titleSuffix: `${this.guild.name} Logs`,
       description: 'View guild logs and changes to the guild listing.',
       url: `dashboard/guilds/${id}/log`
     });
