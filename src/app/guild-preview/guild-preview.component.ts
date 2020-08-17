@@ -15,27 +15,22 @@ export class GuildPreviewComponent implements OnInit {
   ownerUser: any;
 
   @Input() savedGuild = {
-    approvedAt: null,
     badges: [],
+    invite: '',
     listing: {
       body: '',
-      githubURL: 'https://github.com/theADAMJR',
-      invite: '',
       overview: 'A good guild I guess...',
-      prefix: '/',
-      tags: ['music', 'moderation', 'utility'],
-      websiteURL: 'https://3pg.xyz'
+      language: '/',
+      tags: ['music', 'moderation', 'utility']
     },
-    stats: { guildCount: 100 },
     ownerId: '218459216145285121',
     votes: ['218459216145285121']
   }
 
   @Input() guild = {
     id: '',
-    displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
-    username: 'Guild User',
-    discriminator: '0000'
+    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    username: 'Server'
   }
 
   get markdown() {

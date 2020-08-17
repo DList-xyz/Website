@@ -1,31 +1,31 @@
 header {
-    background-color: var(--background-secondary);
+  background-color: var(--background-secondary);
 }
 
 .server {
-    max-width: 192px;
-    margin-top: 5px;
+  max-width: 192px;
+  margin-top: 5px;
 }
 
 p:not(.lead) {
-    color: var(--secondary);
-    cursor: pointer;
+  color: var(--secondary);
+  cursor: pointer;
 }
 
 mat-chip {
-    cursor: pointer;
-    background-color: var(--primary) !important;
+  cursor: pointer;
+  background-color: var(--primary) !important;
 }
 
 .more {
-    background-color: var(--tertiary) !important;    
+  background-color: var(--tertiary) !important;
 }
 
 #content {
-    min-height: 40vh;
+  min-height: 40vh;
 }
 
 #searchButton {
-    margin-left: 5px;
-    height: 64px;
+  margin-left: 5px;
+  height: 64px;
 }

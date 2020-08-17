@@ -23,9 +23,9 @@ export class GuildComponent implements OnInit {
     this.route.paramMap.subscribe(async (paramMap) => {
       const id = paramMap.get('id');      
        
-      this.guild = await this.guildsService.getSavedGuild(id);
+      this.guild = await this.guildsService.getGuild(id);
       this.stats = await this.guildsService.getStats(id);
-      this.savedGuild = await this.guildsService.getGuild(id);
+      this.savedGuild = await this.guildsService.getSavedGuild(id);
   
       this.seo.setTags({
         description: `Overview of ${this.guild.name} Server listing.`,

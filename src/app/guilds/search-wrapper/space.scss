@@ -1,0 +1,220 @@
+.stars {
+  background: url(../../../assets/img/space/overlay_stars.svg);
+}
+
+.glowing_stars .star {
+  position: absolute;
+  border-radius: 100%;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  opacity: .3;
+  will-change: opacity
+}
+
+.glowing_stars .star:nth-child(1) {
+  top: 80%;
+  left: 25%;
+  animation: glow-star 2s infinite ease-in-out alternate 1s
+}
+
+.glowing_stars .star:nth-child(2) {
+  top: 60%;
+  left: 40%;
+  animation: glow-star 2s infinite ease-in-out alternate 3s
+}
+
+.glowing_stars .star:nth-child(3) {
+  top: 50%;
+  left: 25%;
+  animation: glow-star 2s infinite ease-in-out alternate 5s
+}
+
+.glowing_stars .star:nth-child(4) {
+  top: 75%;
+  left: 80%;
+  animation: glow-star 2s infinite ease-in-out alternate 7s
+}
+
+.glowing_stars .star:nth-child(5) {
+  top: 90%;
+  left: 50%;
+  animation: glow-star 2s infinite ease-in-out alternate 9s
+}
+
+@-moz-keyframes glow-star {
+  40% { -moz-opacity: .3 }
+
+  100%,
+  90% {
+    -moz-opacity: 1;
+    -moz-transform: scale(1.2)
+  }
+}
+
+@-webkit-keyframes glow-star {
+  40% { -webkit-opacity: .3 }
+  100%, 90% {
+    -webkit-opacity: 1;
+    -webkit-transform: scale(1.2)
+  }
+}
+
+@keyframes glow-star {
+  40% {
+    -webkit-opacity: .3;
+    opacity: .3
+  }
+
+  100%, 90% {
+    -webkit-opacity: 1;
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    border-radius: 999999px
+  }
+}
+
+@keyframes rocket-movement-right {
+  100% { transform: translate(1200px, -600px); }
+}
+@-moz-keyframes rocket-movement-right {
+  100% { -moz-transform: translate(1200px, -600px); }
+}
+@-webkit-keyframes rocket-movement-right {
+  100% { -webkit-transform: translate(1200px, -600px); }
+}
+
+@keyframes rocket-movement-left {
+  0% { transform: rotate(180deg); }
+  100% { transform: translate(-1200px, 600px) rotate(180deg); }
+}
+@-moz-keyframes rocket-movement-left {
+  0% { -moz-transform: rotate(180deg); }
+  100% { -moz-transform: translate(-1200px, 600px) rotate(180deg); }
+}
+@-webkit-keyframes rocket-movement-left {
+  0% { -webkit-transform: rotate(180deg); }
+  100% { -webkit-transform: translate(-1200px, 600px) rotate(180deg); }
+}
+
+@keyframes ufo-movement {
+  100% { transform: translate(300px, 1000px) rotate(360deg); }
+}
+@-moz-keyframes ufo-movement {
+  100% { -moz-transform: translate(300px, 1000px) rotate(360deg); }
+}
+@-webkit-keyframes ufo-movement {
+  100% { -webkit-transform: translate(300px, 1000px) rotate(360deg); }
+}
+
+.rocket-1 {
+  z-index: 95;
+  position: absolute;
+  top: 125%;
+  left: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-right 175s linear infinite both running;
+  animation-delay: random(500) + s;
+}
+.rocket-2 {
+  z-index: 95;
+  position: absolute;
+  top: 135%;
+  right: -10%;
+
+  pointer-events: none;
+  animation: rocket-movement-left 200s linear infinite both running;
+  animation-delay: random(500) + s;
+}
+.rocket-3 {
+  z-index: 95;
+  position: absolute;
+  top: 150%;
+  left: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-right 150s linear infinite both running;
+  animation-delay: random(500) + s;
+}
+.rocket-4 {
+  z-index: 95;
+  position: absolute;
+  top: 70%;
+  left: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-right 250s linear infinite both running;
+}
+.rocket-5 {
+  z-index: 95;
+  position: absolute;
+  top: 60%;
+  right: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-left 200s linear infinite both running;
+  animation-delay: random(500) + s;
+}
+.rocket-6 {
+  z-index: 95;
+  position: absolute;
+  top: 100%;
+  right: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-left 150s linear infinite both running;
+  animation-delay: random(500) + s;
+}
+
+.meteor {
+  max-width: 32px;
+  width: auto;
+  height: auto;
+}
+.meteor-1 {
+  z-index: 0;
+  position: absolute;
+  top: 90%;
+  right: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-left 50s linear infinite both running; 
+  animation-delay: random(180) + s;
+}
+.meteor-2 {
+  z-index: 0;
+  position: absolute;
+  top: 165%;
+  right: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-left 50s linear infinite both running;
+  animation-delay: random(180) + s;
+}
+.meteor-3 {
+  z-index: 0;
+  position: absolute;
+  top: 50%;
+  left: -50px;
+
+  pointer-events: none;
+  animation: rocket-movement-right 20s linear infinite both running;
+  animation-delay: random(180) + s;
+}
+
+.ufo {
+  max-width: 48px;
+  width: auto;
+  height: auto;
+  
+  z-index: 0;
+  position: absolute;
+  bottom: -100px;
+  left: -50px;
+
+  pointer-events: none;
+  animation: ufo-movement 30s linear infinite both running;
+  animation-delay: random(300) + s;
+}

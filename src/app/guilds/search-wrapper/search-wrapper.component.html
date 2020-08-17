@@ -31,41 +31,65 @@
 </header>
 <waves inverted="true"></waves>
 
-<div id="content" class="container">
-    <guilds id="bumped" #guilds></guilds>
-
-    <div *ngIf="!guilds.query && !guilds.tag">
-        <hr>
-
-        <guilds id="top" [tag]="{
-            description: 'Top rated servers this week.',
-            icon: 'fas fa-star',
-            name: 'top'
-        }"></guilds>
-
-        <hr>
-
-        <guilds id="featured" [tag]="{
-            description: 'Featured servers selected by DList.',
-            icon: 'fas fa-star',
-            name: 'featured'
-        }"></guilds>
-        
-        <hr class="mb-5">
-
-        <h2 class="pb-2"><i class="fas fa-hashtag"></i> Tags</h2>
-        <mat-chip-list>
-            <mat-chip *ngFor="let tag of tagService.tags"
-                class="tag cursor-pointer"
-                [routerLink]="['/tags/', tag.name]">{{ tag.name | kebabToTitleCase }}
-                <i [class]="tag.icon" class="ml-1" aria-hidden="true"></i>
-            </mat-chip>
-        </mat-chip-list>
-
-        <div class="d-flex justify-content-center mt-5 mb-2">
-            <div class="rounded-lg btn-gradient">
-                <button routerLink="/tags/community"
-                    class="btn-gradient py-2 px-4" mat-button>View More</button>
+<div id="content" class="stars">
+    <div class="glowing_stars">
+        <div *ngIf="initialized && !(guildsComponent.tag || guildsComponent.query)">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <img class="rocket-1" src="assets\img\space\rocket.svg" width="30px">
+            <img class="rocket-2" src="assets\img\space\rocket.svg" width="50px">
+            <img class="rocket-3" src="assets\img\space\rocket2.svg" width="50px">
+            <img class="rocket-4" src="assets\img\space\rocket2.svg" width="40px">
+            <img class="rocket-5" src="assets\img\space\rocket.svg" width="20px">
+            <img class="rocket-6" src="assets\img\space\rocket.svg" width="50px">
+            <img class="meteor meteor-1" src="assets\img\space\meteor1.png">
+            <img class="meteor meteor-2" src="assets\img\space\meteor2.png">
+            <img class="meteor meteor-3" src="assets\img\space\meteor3.png">
+            <img class="meteor meteor-2" src="assets\img\space\meteor2.png">
+            <img class="meteor meteor-3" src="assets\img\space\meteor3.png">
+            <img class="meteor meteor-3" src="assets\img\space\meteor3.png">
+            <img class="ufo" src="assets\img\space\ufo.png">
+        </div>
+    </div>
+    <div class="container">
+        <guilds id="bumped" #guilds></guilds>
+    
+        <div *ngIf="!guilds.query && !guilds.tag">
+            <hr>
+    
+            <guilds id="top" [tag]="{
+                description: 'Top rated servers this week.',
+                icon: 'fas fa-star',
+                name: 'top'
+            }"></guilds>
+    
+            <hr>
+    
+            <guilds id="featured" [tag]="{
+                description: 'Featured servers selected by DList.',
+                icon: 'fas fa-star',
+                name: 'featured'
+            }"></guilds>
+            
+            <hr class="mb-5">
+    
+            <h2 class="pb-2"><i class="fas fa-hashtag"></i> Tags</h2>
+            <mat-chip-list>
+                <mat-chip *ngFor="let tag of tagService.tags"
+                    class="tag cursor-pointer"
+                    [routerLink]="['/tags/', tag.name]">{{ tag.name | kebabToTitleCase }}
+                    <i [class]="tag.icon" class="ml-1" aria-hidden="true"></i>
+                </mat-chip>
+            </mat-chip-list>
+    
+            <div class="d-flex justify-content-center mt-5 mb-2">
+                <div class="rounded-lg btn-gradient">
+                    <button routerLink="/tags/community"
+                        class="btn-gradient py-2 px-4" mat-button>View More</button>
+                </div>
             </div>
         </div>
     </div>

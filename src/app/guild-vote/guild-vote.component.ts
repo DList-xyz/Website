@@ -15,7 +15,7 @@ export class GuildVoteComponent implements OnInit {
   savedGuild: any;
 
   get widgetURL() { return `${environment.endpoint}/guilds/${this.id}/widget?size=medium`; }
-  get id() { return this.route.snapshot.paramMap.get('id') }
+  get id() { return this.route.snapshot.paramMap.get('id'); }
 
   constructor(
     private route: ActivatedRoute,

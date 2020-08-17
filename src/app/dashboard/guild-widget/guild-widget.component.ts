@@ -19,7 +19,7 @@ export class GuildWidgetComponent implements OnInit {
   });
 
   get widgetURL() { return `${environment.url}/api/guilds/${this.id}/widget?size=${this.form.value.size}`; }
-  get id() { return this.route.snapshot.paramMap.get('id') }
+  get id() { return this.route.snapshot.paramMap.get('id'); }
 
   constructor(
     private route: ActivatedRoute,

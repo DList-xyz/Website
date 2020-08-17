@@ -2,20 +2,20 @@ import { Component, ViewChild, AfterContentInit, AfterViewInit } from '@angular/
 import { GuildsComponent } from '../guilds.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SEOService as SEOService, TypingSEO } from 'src/app/services/seo.service';
-import { GuildsService } from '../../services/guilds.service';
 import { kebabToLowerCase, kebabToTitleCase } from 'src/app/utils';
 import { TagService } from 'src/app/services/tag.service';
 
 @Component({
   selector: 'search-wrapper',
   templateUrl: './search-wrapper.component.html',
-  styleUrls: ['./search-wrapper.component.css']
+  styleUrls: ['./search-wrapper.component.css', './space.scss']
 })
 export class SearchWrapperComponent implements AfterViewInit {
   @ViewChild('guilds') guildsComponent: GuildsComponent;
   @ViewChild('searchInput') searchInput: any;
 
   placeholder = '';
+  initialized = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +36,8 @@ export class SearchWrapperComponent implements AfterViewInit {
         if (tagName)
           this.searchByTag(tagName);
       });
+
+      this.initialized = true;
     });
   }
 
@@ -49,8 +51,8 @@ export class SearchWrapperComponent implements AfterViewInit {
     this.router.navigate(['search'], extra);
 
     this.updateMetaTags({
-      description: `Find guilds similar to '${query}'.`,
-      titleSuffix: `${query} Guilds`,
+      description: `Find servers similar to '${query}'.`,
+      titleSuffix: `${query} Servers`,
       url: `search/q?=${query}`
     });
 
@@ -63,7 +65,7 @@ export class SearchWrapperComponent implements AfterViewInit {
 
     this.updateMetaTags({
       description: tag.description,
-      titleSuffix: `${kebabToTitleCase(tag.name)} Guilds`,
+      titleSuffix: `${kebabToTitleCase(tag.name)} Servers`,
       url: `tags/${tag.name}`
     });
   }

@@ -45,12 +45,16 @@
         <button *ngIf="canManage"
             [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
             class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
-        <a [href]="savedGuild.listing.invite" rel="nofollow"
-            class="rounded-lg bg-primary mr-2" mat-button><i class="fas fa-plus-circle"></i> Add</a>
+        <a *ngIf="savedGuild.invite"
+            [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
+            class="rounded-lg bg-primary mr-2" mat-button><i class="fas fa-plus-circle"></i> Join</a>
+        <a *ngIf="!savedGuild.invite"
+            [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
+            class="rounded-lg bg-primary mr-2"
+            matTooltip="Invite not generated." disabled mat-button><i class="fas fa-plus-circle"></i> Join</a>
         <button [routerLink]="['/servers/' + guild.id +'/vote']"
             class="bg-secondary" mat-button><i class="fas fa-chevron-circle-up"></i> Vote</button>
     </span>
-    <hr>
 </div>
 
 <div id="markdown" class="container rounded my-4" [innerHTML]="markdown"></div>
