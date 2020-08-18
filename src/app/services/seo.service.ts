@@ -21,7 +21,7 @@ export interface TypingName {
 @Injectable()
 export class SEOService {
   base = {
-    titlePrefix: 'Find Discord Guilds',
+    titlePrefix: 'Find the Best Discord Servers',
     titleSuffix: 'DList',
     url: 'https://dlist.xyz'
   }
