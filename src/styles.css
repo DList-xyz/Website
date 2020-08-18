@@ -6,6 +6,13 @@
 @import '~simplemde/dist/simplemde.min.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
 
+@font-face {
+    font-family: 'Whitney-Semibold Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Whitney-Semibold Regular'), url('assets/fonts/whitneysemibold.woff') format('woff');
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -22,7 +29,7 @@ body, mat-sidenav-content {
     
     overflow-x: hidden !important;
 
-    font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: 'Whitney-Semibold Regular',Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 footer {
@@ -237,17 +244,17 @@ mat-paginator {
     border: none !important;
 }
 
-mat-sidenav a {
+mat-sidenav a:not(.invite) {
     margin: 2px 10px;
     padding: 5px;
     padding-left: 10px !important;
 
     border-radius: 5px;
 }
-mat-sidenav a.active {
+mat-sidenav a:not(a[href]).active {
     background-color: var(--background-primary) !important;
 }
-mat-sidenav a:hover {
+mat-sidenav a:not(a[href]):hover {
     color: var(--heading);
     background-color: var(--background-primary) !important;
 }

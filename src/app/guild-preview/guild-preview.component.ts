@@ -30,7 +30,7 @@ export class GuildPreviewComponent implements OnInit {
   @Input() guild = {
     id: '',
     iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
-    username: 'Server'
+    name: 'Server'
   }
 
   get markdown() {

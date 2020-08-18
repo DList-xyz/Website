@@ -45,4 +45,26 @@
         </div>
     </div>
   </section>
+  <section *ngIf="!guild && !savedGuild"
+    class="container">
+    <div class="jumbotron">
+      <p class="lead">The bot is not in this server.</p>
+      <a [href]="inviteURL" target="_blank">
+        <button color="success" mat-button>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+        </button>
+      </a>
+    </div>
+  </section>
+  <section *ngIf="guild && !savedGuild"
+    class="container">
+    <div class="jumbotron">
+      <p class="lead">Server listing was deleted, please type <code>.dl invite</code> to create one.</p>
+      <a [href]="inviteURL" target="_blank">
+        <button color="success" mat-button>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+        </button>
+      </a>
+    </div>
+  </section>
 </guild-sidebar>

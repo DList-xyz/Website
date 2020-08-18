@@ -4,7 +4,7 @@
     <div [hidden]="preview" class="container">
         <div class="container">
                 <div class="d-flex justify-content-between">
-                    <h1 [textContent]="editing ? 'Edit ' + guild.name : 'Add Server'"
+                    <h1 [textContent]="editing ? 'Edit ' + guild?.name : 'Add Server'"
                         class="display-4">Add Server</h1>
                     <button id="previewButton" (click)="preview = true"
                         class="rounded-lg mt-3" type="button" color="success" mat-button>
@@ -19,16 +19,8 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Overview</mat-label>
                         <textarea formControlName="overview" type="text" matInput required></textarea>
-                        <mat-error *ngIf="form.get('overview').invalid">Required, and should be between 64 and 128 characters in length.</mat-error>
+                        <mat-error *ngIf="form.get('overview').invalid">Required, and should be between less than 128 characters in length.</mat-error>
                     </mat-form-field>
-
-                    <div class="editor-container mt-3">
-                        <label for="editor">Body</label>
-                        <textarea id="editor" formControlName="body" placeholder="300 characters minimum (markdown allowed)" hidden></textarea>
-                        <mat-error *ngIf="form.get('body').invalid">Required, and should be at least 300 characters in length.</mat-error>
-                    </div>
-
-                    <hr>
                     
                     <mat-form-field appearance="outline">
                         <mat-label>Tags</mat-label>
@@ -40,6 +32,12 @@
                         </mat-select>
                         <mat-error *ngIf="form.get('tags').invalid">No more than 5 tags.</mat-error>
                     </mat-form-field>
+
+                    <div class="editor-container mt-3">
+                        <label for="editor">Body</label>
+                        <textarea id="editor" formControlName="body" placeholder="300 characters minimum (markdown allowed)" hidden></textarea>
+                        <mat-error *ngIf="form.get('body').invalid">Body is required.</mat-error>
+                    </div>
 
                     <div *ngIf="form.hasError('invalid')"
                         class="alert alert-error border border-danger">
@@ -61,7 +59,7 @@
                 </form>
             </div>
             <div class="col-lg-6 d-none d-sm-block border-left">
-                <a [routerLink]="['/docs/guild-guidelines']" routerLinkActive="active"
+                <a [routerLink]="['/docs/guidelines']" routerLinkActive="active"
                     class="nav-item nav-link">
                     <i class="fas fa-book"></i> Guidelines for adding a server.</a>
                 <div *ngIf="!editing"
@@ -77,25 +75,6 @@
                         [guild]="guild"
                         [savedGuild]="savedGuild"></guild-card>
                 </div>
-
-                <hr>
-
-                <h3>Widgets</h3>
-                <p>Cool widgets that you can use to show off your server, and get more votes.</p>
-                <a class="text-secondary" routerLink="/docs/widget">
-                    <i class="text-info fas fa-code"></i>
-                </a>
-                <p class="text-center">(Example)</p>
-                <div class="d-flex justify-content-center">
-                    <div class="text-muted uppercase">
-                        <p class="mb-0">Large</p>
-                        <img [src]="widgetURL + '?size=large'" alt="Server Widget Example">
-                        <p class="mt-3 mb-0">Medium</p>
-                        <img [src]="widgetURL + '?size=medium'" alt="Server Widget Example">
-                        <p class="mt-3 mb-0">Small</p>
-                        <img [src]="widgetURL + '?size=small'" alt="Server Widget Example">
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -106,7 +85,9 @@
                 class="float-right" color="danger" mat-button>&times;</button>
 
             <guild-preview *ngIf="guild"
-                [savedGuild]="savedGuild" [preview]="true"></guild-preview>
+                [savedGuild]="savedGuild"
+                [guild]="guild"
+                [preview]="true"></guild-preview>
         </div>
     </div>
 </guild-sidebar>

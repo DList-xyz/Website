@@ -36,7 +36,7 @@ export class GuildVoteComponent implements OnInit {
       description: this.savedGuild.listing.overview,
       titlePrefix: `Vote for ${this.guild.name}`,
       titleSuffix: 'DList',
-      url: `guilds/${this.id}`
+      url: `servers/${this.id}`
     });
   }
 
@@ -46,6 +46,6 @@ export class GuildVoteComponent implements OnInit {
     await this.service.vote(this.id);
     await this.service.refreshGuilds();
 
-    return this.router.navigate(['/guilds/' + this.id]);
+    return this.router.navigate(['/servers/' + this.id]);
   }
 }

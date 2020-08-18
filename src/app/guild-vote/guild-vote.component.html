@@ -1,10 +1,10 @@
 <navbar></navbar>
 
-<div *ngIf="guild && user"
+<div *ngIf="savedGuild && guild"
   class="container">
   <div class="d-flex justify-content-center mb-3">
     <a [href]="'/servers/' + id">
-      <img [src]="widgetURL" [alt]="user.username">
+      <img [src]="widgetURL" [alt]="guild.name">
     </a>
   </div>
   <div class="d-flex justify-content-center">

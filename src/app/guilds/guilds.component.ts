@@ -34,25 +34,26 @@ export class GuildsComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
     await this.service.init();
 
-    if (this.tag) {
-      var guilds = [],
-          saved = [];
-        
-      if (this.tag.name === 'featured')
-        var { guilds, saved } = this.service.getFeaturedGuilds();
-      else if (this.tag.name === 'new')
-        var { guilds, saved } = this.service.getNewGuilds();
-      else
-        var { guilds, saved } = this.service.getTaggedGuilds(this.tag.name);
-
-      this.guilds = guilds;
-      this.savedGuilds = saved;
-
-      this.setTagLayout(this.tag);
-    } else
-      this.loadGuilds();
+    (this.tag) ? this.loadTagLayout() : this.loadGuilds();
 
     this.initialized = true;    
+  }
+
+  private loadTagLayout() {
+    var guilds = [],
+      saved = [];
+
+    if (this.tag.name === 'featured')
+      var { guilds, saved } = this.service.getFeaturedGuilds();
+    else if (this.tag.name === 'new')
+      var { guilds, saved } = this.service.getNewGuilds();
+    else
+      var { guilds, saved } = this.service.getTaggedGuilds(this.tag.name);
+
+    this.guilds = guilds;
+    this.savedGuilds = saved;
+
+    this.setTagLayout(this.tag);
   }
 
   ngAfterViewInit() {

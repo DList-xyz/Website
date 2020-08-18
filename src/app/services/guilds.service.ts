@@ -86,7 +86,7 @@ export class GuildsService {
     return { guilds, saved: savedGuilds };
   }
   getTopGuilds() {
-    const savedGuilds = this.savedGuilds;
+    const savedGuilds = this.savedGuilds.sort((a, b) => b.votes.length - a.votes.length);
     const ids = savedGuilds.map(g => g._id);
     const guilds = [];
     for (const id of ids)

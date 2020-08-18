@@ -6,12 +6,7 @@
             <span class="pl-3"><i class="fas fa-chevron-circle-up" matTooltip="Votes"></i> {{ savedGuild.votes.length | number }}</span>
             <span class="border border-dark py-1 mx-4"></span>
             <span>
-                <span *ngIf="guild.approvedAt"
-                    matTooltip="Reviewed and approved."
-                    class="cursor-pointer">
-                    <i class="text-success fas fa-check-circle"></i>
-                </span>
-                <span *ngIf="guild.badges?.includes('featured')"
+                <span *ngIf="savedGuild.badges?.includes('featured')"
                     matTooltip="Featured."
                     class="ml-2 cursor-pointer">
                     <i class="color-gold fas fa-star"></i>

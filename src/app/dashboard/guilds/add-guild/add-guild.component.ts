@@ -16,19 +16,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./add-guild.component.css']
 })
 export class AddGuildComponent implements AfterViewInit {
+  @Input() editing = true;
+
   preview = false;
   editor: SimpleMDE;
 
   toIterable = toIterable;
   filteredTags = this.tagService.tags;
 
-  @Input() editing = false;
-
   form = new FormGroup({
-    body: new FormControl('', [ Validators.required, Validators.minLength(300) ]),
-    id: new FormControl(''),
-    overview: new FormControl('', [ Validators.required, Validators.minLength(32), Validators.maxLength(128) ]),
-    language: new FormControl(''),
+    body: new FormControl('', [ Validators.required ]),
+    overview: new FormControl('', [ Validators.required, Validators.minLength(0), Validators.maxLength(128) ]),
+    language: new FormControl('en'),
     tags: new FormControl([], [ Validators.maxLength(5) ])
   });
 
@@ -40,20 +39,17 @@ export class AddGuildComponent implements AfterViewInit {
 
   @Input() savedGuild = {
     listing: {
-      body: `Add something \`meaningful\` and **useful** here, to help your guild users.`,
-      overview: 'Add guild summary here.'
+      body: `A server that has not yet been edited.`,
+      overview: 'No description set.'
     },
     votes: toIterable(100)
   };
-  
-  get widgetURL() { return `${environment.url}/api/guilds/525935335918665760/widget`; }
 
   constructor(
     public guildService: GuildsService,
     private router: Router,
     seo: SEOService,
-    public tagService: TagService,
-    private userService: UserService) {
+    public tagService: TagService) {
       seo.setTags({
         description: 'Add a server to the server list with this form.',
         titlePrefix: 'Add Server',
@@ -68,13 +64,7 @@ export class AddGuildComponent implements AfterViewInit {
 
       this.initializeEditor();
       this.initFormValue();
-      this.hookEvents();      
-
-      this.form.get('guildId').setValidators([
-        Validators.required, 
-        Validators.pattern(/^\d{18}$/),
-        Validators.pattern(new RegExp(`^(?!${this.userService.user.id}).*$`))
-      ])
+      this.hookEvents();
     });
   }
 
@@ -132,7 +122,10 @@ export class AddGuildComponent implements AfterViewInit {
   }
   
   filterTags(filter: string): void {
-    this.filteredTags = this.tagService.tags.filter(tag => tag.name.toLowerCase().includes(filter.toLowerCase()));
+    this.filteredTags = this.tagService.tags
+      .filter(tag => tag.name
+          .toLowerCase()
+          .includes(filter.toLowerCase()));
   }
 
   submit() {
@@ -151,7 +144,7 @@ export class AddGuildComponent implements AfterViewInit {
   }
 
   navigateToGuildListing() {
-    this.router.navigate(['/guilds/', this.form.value.guildId]);
+    this.router.navigate(['/servers/', this.form.value.guildId]);
   }
 
   // input events

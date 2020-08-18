@@ -1,5 +1,5 @@
 header {
-  background-color: var(--background-secondary);
+  background: linear-gradient(0deg, transparent 0%, var(--background-primary) 100%);
 }
 
 .server {

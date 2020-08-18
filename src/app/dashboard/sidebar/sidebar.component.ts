@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import { GuildsService } from 'src/app/services/guilds.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'sidebar',
@@ -10,6 +11,8 @@ import { GuildsService } from 'src/app/services/guilds.service';
 })
 export class SidebarComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
+
+  get inviteURL() { return `${environment.endpoint}/invite`; }
 
   constructor(
     public guildService: GuildsService,

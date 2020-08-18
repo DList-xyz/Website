@@ -25,9 +25,6 @@ export class GuildSidebarComponent implements OnInit {
       this.id = paramMap.get('id');
 
       this.guild = this.guildService.getGuild(this.id);
-      
-      if (!this.guild)
-        this.router.navigate(['/dashboard']);
     });
   }
 }

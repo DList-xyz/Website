@@ -32,3 +32,7 @@ export function kebabToLowerCase(word: string) {
     .map(w => w[0] + w.slice(1).toLowerCase())
     .join(' ') ?? '';
 }
+
+export function isSnowflake(str: string) {
+  return /^\d{18}$/.test(str);
+}

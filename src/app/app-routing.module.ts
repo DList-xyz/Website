@@ -35,7 +35,6 @@ const routes: Routes = [
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardAuthGuard] },
   
-  { path: 'dashboard/servers/new', component: AddGuildComponent, canActivate: [DashboardAuthGuard] },
   { path: 'dashboard/servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },
   { path: 'dashboard/servers/:id/edit', component: EditGuildComponent, canActivate: [GuildAuthGuard] },
   { path: 'dashboard/servers/:id/widget', component: GuildWidgetComponent, canActivate: [GuildAuthGuard] },

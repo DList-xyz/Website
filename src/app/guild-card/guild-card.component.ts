@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { kebabToTitleCase } from '../utils';
 
 @Component({
@@ -20,6 +20,7 @@ export class GuildCardComponent {
       language: 'en',
       tags: ['Community']
     },
+    invite: '',
     votes: ['218459216145285121']
   }
 

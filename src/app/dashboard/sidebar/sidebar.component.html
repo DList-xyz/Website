@@ -7,17 +7,19 @@
                 </div>
                 <hr class="guild-seperator">
             </div>
-            <div *ngFor="let guild of guildService.userGuilds" [routerLink]="['/dashboard/servers/' + guild.id]"
-                class="guild-icon">
-                <img *ngIf="guild"
-                    [src]="guild.iconURL"
-                    [alt]="guild.name">
+            <div *ngFor="let guild of guildService.userGuilds"
+                [routerLink]="['/dashboard/servers/' + guild.id]"
+                class="guild-icon cursor-pointer">
+                <img *ngIf="guild.iconURL"
+                    [src]="guild.iconURL" [alt]="guild.name">
+                <span *ngIf="!guild.iconURL"
+                    class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
             </div>
-            <div routerLink="/dashboard/servers/new" 
-                class="guild-icon invite"
-                matTooltip="Add a Server">
-                <span class="add-guild pt-0 d-flex justify-content-center flex-column">+</span>
-            </div>
+            <a [href]="inviteURL" 
+                class="guild-icon invite m-0"
+                matTooltip="Invite the Bot">
+                <span class="add-guild mx-1 pt-0 d-flex justify-content-center flex-column">+</span>
+            </a>
         </div>
         <div class="options">
             <ng-content select=".side-nav"></ng-content>
