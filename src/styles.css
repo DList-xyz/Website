@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~highlight.js/styles/vs2015.css';
+@import '~highlight.js/styles/nord.css';
 @import '~chart.js/dist/Chart.min.css';
 @import 'assets/css/utils.css';
 @import '~simplemde/dist/simplemde.min.css';

@@ -1,4 +1,5 @@
 .stars {
+  z-index: 0;
   background: url(../../../assets/img/space/overlay_stars.svg);
 }
 
@@ -9,7 +10,7 @@
   width: 8px;
   height: 8px;
   opacity: .3;
-  will-change: opacity
+  will-change: opacity;
 }
 
 .glowing_stars .star:nth-child(1) {
@@ -111,7 +112,7 @@
 .rocket-1 {
   z-index: -1;
   position: absolute;
-  top: 125%;
+  top: random(300) + vh;
   left: -50px;
 
   pointer-events: none;
@@ -121,7 +122,7 @@
 .rocket-2 {
   z-index: -1;
   position: absolute;
-  top: 135%;
+  top: random(300) + vh;
   right: -10%;
 
   pointer-events: none;
@@ -131,7 +132,7 @@
 .rocket-3 {
   z-index: -1;
   position: absolute;
-  top: 150%;
+  top: random(300) + vh;
   left: -50px;
 
   pointer-events: none;
@@ -141,7 +142,7 @@
 .rocket-4 {
   z-index: -1;
   position: absolute;
-  top: 70%;
+  top: 65vh;
   left: -50px;
 
   pointer-events: none;
@@ -150,7 +151,7 @@
 .rocket-5 {
   z-index: -1;
   position: absolute;
-  top: 60%;
+  top: random(300) + vh;
   right: -50px;
 
   pointer-events: none;
@@ -160,7 +161,7 @@
 .rocket-6 {
   z-index: -1;
   position: absolute;
-  top: 100%;
+  top: random(300) + vh;
   right: -50px;
 
   pointer-events: none;
@@ -174,9 +175,9 @@
   height: auto;
 }
 .meteor-1 {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
-  top: 90%;
+  top: random(300) + vh;
   right: -50px;
 
   pointer-events: none;
@@ -184,9 +185,9 @@
   animation-delay: random(180) + s;
 }
 .meteor-2 {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
-  top: 165%;
+  top: random(300) + vh;
   right: -50px;
 
   pointer-events: none;
@@ -194,9 +195,9 @@
   animation-delay: random(180) + s;
 }
 .meteor-3 {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
-  top: 50%;
+  top: random(300) + vh;
   left: -50px;
 
   pointer-events: none;
@@ -209,7 +210,7 @@
   width: auto;
   height: auto;
   
-  z-index: 0;
+  z-index: -1;
   position: absolute;
   bottom: -100px;
   left: -50px;

@@ -6,9 +6,7 @@
 - Interact with DList through HTTP requests
 
 ## Uses
-- Guild interaction for webapp
-- XP Cards
-- Creating payment sessions
+- Server interaction for dashboard
 - OAuth2 Discord authorization
 
 ## Status Codes
@@ -19,7 +17,7 @@ Code | Description
 429  | Too many requests
 500  | Internal server error (rare)
 
-**API Error Examples**:
+**API Error Example**:
 `{ code: 400, message: 'Bad Request' }`
 
 ---
@@ -31,33 +29,12 @@ A maximum of *600 requests* can be sent *per 10 minutes*.
 
 ---
 
-## Vote Webhook
-This is what is posted to a guilds **Vote Webhook URL**, when a guild is voted for.
+## Server 
 
-### Reponse
+## Server Stats
+You can view the stats of a server, including voting, servers and more.
 
-**Schema**:
-```ts
-{
-  at: Date; // JSON date when of vote
-  by: string; // id of user that votes
-}
-```
-
-**Example**:
-{
-  at: "2020-08-07T12:56:27.100Z",
-  by: "218459216145285121"
-}
-
----
-
-## Guild 
-
-## Guild Stats
-You can view the stats of a guild, including voting, guilds and more.
-
-**URL**: `https://DList.co/api/guilds/:id/stats`
+**URL**: `https://dlist.xyz/api/guilds/:id/stats`
 
 ### Reponse
 
@@ -86,4 +63,4 @@ You can view the stats of a guild, including voting, guilds and more.
 }
 ```
 
-**Example**: `https://DList.co/api/guilds/525935335918665760/stats`
+**Example**: `https://dlist.xyz/api/guilds/744166274028011561/stats`

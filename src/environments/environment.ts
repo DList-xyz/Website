@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  defaultIconURL: '/assets/img/icon.png',
   production: false,
   endpoint: 'http://localhost:3000/api',
   discordInvite: 'https://discord.gg/nH9D8Jg',

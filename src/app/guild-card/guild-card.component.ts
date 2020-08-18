@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { kebabToTitleCase } from '../utils';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'guild-card',
@@ -9,10 +10,10 @@ import { kebabToTitleCase } from '../utils';
 export class GuildCardComponent {
   @Input() guild = {
     id: '',
-    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    iconURL: environment.defaultIconURL,
     name: 'Server'
   }
-
+  
   @Input() savedGuild = {
     listing: {
       body: '',
@@ -24,6 +25,8 @@ export class GuildCardComponent {
     invite: '',
     votes: ['218459216145285121']
   }
+
+  defaultIconURL = environment.defaultIconURL;
 
   get cleanTags() {
     return this.savedGuild.listing.tags

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'report-modal',
@@ -7,4 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ReportModalComponent {
   @Input() guild: any;
+  @Output() report = new EventEmitter();
+  @ViewChild('reason') reason: MatInput;
 }

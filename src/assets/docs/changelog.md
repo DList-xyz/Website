@@ -11,8 +11,8 @@
 ---
 
 ### v0.0.1a
-`15/08/2020`
+`18/08/2020`
 ![v0.0.1a](assets/docs/img/v0.0.1a.png)
 
 [DList](/) and the [DList Discord Server](/server) is released!
-The first version was made in around 3 days.
+The first version was made across [4 live streams](https://youtube.com/ADAMJR).

@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { GuildsService } from '../services/guilds.service';
 import { Router } from '@angular/router';
 import { TagService } from '../services/tag.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'guild-preview',
@@ -13,6 +14,7 @@ import { TagService } from '../services/tag.service';
 export class GuildPreviewComponent implements OnInit {
   @Input() preview = false;
   ownerUser: any;
+  defaultIconURL = environment.defaultIconURL;
 
   @Input() savedGuild = {
     badges: [],
@@ -29,7 +31,7 @@ export class GuildPreviewComponent implements OnInit {
 
   @Input() guild = {
     id: '',
-    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    iconURL: environment.defaultIconURL,
     name: 'Server'
   }
 
@@ -63,7 +65,7 @@ export class GuildPreviewComponent implements OnInit {
   }
 
   async report(reason: string) {
-    
+    await this.service.report(this.guild.id, reason);
   }
 
   async addBadge(name: string) {

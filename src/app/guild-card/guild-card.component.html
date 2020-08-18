@@ -2,11 +2,9 @@
   class="fade-in text-center rounded-lg card shadow text-white bg-dark">
   <div [routerLink]="['/servers/', guild.id]"
     class="cursor-pointer d-flex justify-content-center">
-    <img *ngIf="guild.iconURL" class="shadow rounded-lg card-img-top"
-      [src]="guild.iconURL"
-      [alt]="guild.name + ' | ' + cleanTags">
-    <img *ngIf="!guild.iconURL" class="shadow rounded-lg card-img-top py-4"
-      src="/assets/img/icon.png"
+    <img class="shadow rounded-lg card-img-top"
+      [src]="guild.iconURL || defaultIconURL"
+      [class.py-4]="!guild.iconURL"
       [alt]="guild.name + ' | ' + cleanTags">
   </div>
   <div class="card-body">

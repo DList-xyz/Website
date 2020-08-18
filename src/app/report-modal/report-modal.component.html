@@ -10,12 +10,13 @@
       <div class="modal-body">
         <mat-form-field appearance="outline">
           <mat-label>Reason</mat-label>
-          <textarea type="text" required matInput></textarea>
+          <textarea type="text" required matInput #reason></textarea>
         </mat-form-field>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning text-light" cols="50">Report</button>
+        <button (click)="report.emit(reason.value)"
+          type="button" class="btn btn-warning text-light" cols="50" data-dismiss="modal">Report</button>
       </div>
     </div>
   </div>

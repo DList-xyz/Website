@@ -3,10 +3,17 @@
 <url>how-it-works</url>
 
 # How It Works
-All searched guilds are ranked by the most votes.
 
-## New Guilds
-Guilds less than one week old, ranked by the most votes.
+## Bumped Servers
+Servers bumped most recently.
+
+## Top Servers
+Servers with the most votes.
+
+## New Servers
+Servers less than one week old, ranked by the most votes.
+
+---
 
 ## Searching
 `Overview`, `Body` and `Tags`, in order of use, are used to display results.

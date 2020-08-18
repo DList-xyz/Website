@@ -112,12 +112,13 @@ export class AddGuildComponent implements AfterViewInit {
           .includes(filter.toLowerCase()));
   }
 
-  update() {    
+  async update() {    
     this.form.controls.body.setValue(this.editor.value());
     if (this.form.invalid)
       return this.form.setErrors({ invalid: true });
     
-    this.guildService.updateGuild(this.guild.id, this.form.value);
+    await this.guildService.updateGuild(this.guild.id, this.form.value);
+    await this.guildService.refreshGuilds();
   }
 
   navigateToGuildListing() {

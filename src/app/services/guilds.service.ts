@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Fuse from 'fuse.js';
 import { environment } from 'src/environments/environment';
+import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class GuildsService {
@@ -32,7 +33,9 @@ export class GuildsService {
     return { guilds, saved: savedGuilds };
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private userService: UserService) {}
   
   private get key() { return localStorage.getItem('key'); }
 
@@ -41,7 +44,7 @@ export class GuildsService {
       if (!this.guilds || !this.savedGuilds)
         await this.refreshGuilds();
       if (!this.userGuilds || !this.userSavedGuilds)
-        await this.updateUserGuilds();
+        await this.refreshUserGuilds();
     } catch {}
   }
 
@@ -54,12 +57,15 @@ export class GuildsService {
     const ids = this.savedGuilds.map(g => g._id);
     this._guilds = guilds.guilds.filter(g => ids.includes(g.id));
   }
-  async updateUserGuilds() {
-    this._userGuilds = (this.key) ?
-      await this.http.get(`${this.endpoint}/user?key=${this.key}`).toPromise() as any : null;
+  async refreshUserGuilds() {
+    await this.userService.init(); 
 
-    this._userSavedGuilds = (this.key) ?
-      await this.http.get(`${this.endpoint}/user/saved?key=${this.key}`).toPromise() as any : null;
+    const userSavedGuilds = this.savedGuilds
+      .filter(g => g.ownerId === this.userService.user.id);
+    this._userSavedGuilds = userSavedGuilds;
+
+    const ids = userSavedGuilds.map(g => g._id);
+    this._userGuilds = ids.map(id => this.guilds.find(g => g.id === id));
   }
   getSavedLog(id: string) {
     return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise() as Promise<any>;
@@ -175,6 +181,10 @@ export class GuildsService {
 
   getStats(id: string) {
     return this.http.get(`${this.endpoint}/${id}/stats`).toPromise() as Promise<any>;
+  }
+
+  report(id: string, reason: string) {
+    return this.http.get(`${this.endpoint}/${id}/report?key=${this.key}&reason=${reason}`).toPromise() as Promise<any>;
   }
 }
 

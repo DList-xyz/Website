@@ -1,6 +1,6 @@
 <header class="jumbotron mb-0">
     <div class="container">
-        <img [src]="guild.iconURL">
+        <img [src]="guild.iconURL || defaultIconURL">
         <h1>{{ guild.name }}</h1>
         <div>
             <span class="pl-3"><i class="fas fa-chevron-circle-up" matTooltip="Votes"></i> {{ savedGuild.votes.length | number }}</span>
@@ -41,8 +41,13 @@
             [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
             class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
 
-        <button type="button" data-toggle="modal" data-target="#reportModal"
+        <button *ngIf="userService.user"
+            type="button" data-toggle="modal" data-target="#reportModal"
+            [matTooltip]="'Report ' + guild.name"
             class="rounded-lg mr-2" color="warning" mat-button><i class="fas fa-flag"></i></button>
+        <button *ngIf="!userService.user"
+            matTooltip="You must be logged in to report a server."
+            class="rounded-lg mr-2 text-muted" color="warning" mat-button><i class="fas fa-flag"></i></button>
             
         <a *ngIf="savedGuild.invite"
             [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
@@ -80,4 +85,5 @@
     </div>
 </div>
 
-<report-modal [guild]="guild"></report-modal>
+<report-modal (report)="report($event)"
+    [guild]="guild"></report-modal>

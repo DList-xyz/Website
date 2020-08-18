@@ -1,25 +1,27 @@
 <title>Widget</title>
-<description>Cool widgets that you can use to show off your guild, and get more votes.</description>
+<description>Cool widgets that you can use to show off your server, and get more votes.</description>
 <url>widget</url>
 
 # Widget
-Learn how to use cool widgets that you can use to show off your guild, and get more votes.
+Learn how to use cool widgets that you can use to show off your server, and get more votes.
 
-## Get A Guild Widget
-**URL**: `https://DList.co/api/guilds/[guildId]/widget`
+## Server Widget
+**URL**: `https://dlist.xyz/api/guilds/[serverId]/widget`
 
 **HTML Widget Syntax**:
 ```
-<a href="https://DList.co/guilds/yourGuildId">
-  <img src="https://DList.co/api/guilds/[guildId]/widget" alt="View on DList">
+<a href="https://dlist.xyz/guilds/yourserverId">
+  <img src="https://dlist.xyz/api/guilds/[serverId]/widget" alt="View on DList">
 </a>
 ```
 
-Replace `[guildId]` with the ID of a guild.
-Using a widget, on your home page, can also help get your guild [featured](/docs/get-featured).
+Replace `[serverId]` with the ID of a server.
+Using a widget, on your home page, can also help get your server [featured](/docs/get-featured).
 
 **Example**
-![Guild Widget Example](/api/guilds/525935335918665760/widget)
+![Large Server Widget Example](/api/guilds/744166274028011561/widget)
 
 ## Sizes
 **Large** (default)
+**Medium**
+**Small**

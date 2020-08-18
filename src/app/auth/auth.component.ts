@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
       localStorage.setItem('key', key);
     
       await this.userService.updateUser();
-      await this.guildsService.updateUserGuilds();
+      await this.guildsService.refreshUserGuilds();
       
       this.router.navigate(['/dashboard']);
     } catch {

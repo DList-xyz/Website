@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  get discordInvite() { return environment.discordInvite; }
+  discordInvite = environment.discordInvite;
+  get inviteURL() { return `${environment.endpoint}/invite`; }
 
   get user() { return this.userService.user; }
 

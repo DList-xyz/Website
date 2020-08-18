@@ -4,5 +4,6 @@
   background-color: var(--background-secondary);
 }
 footer {  
+  min-width: 100vw;
   position: relative !important;
 }

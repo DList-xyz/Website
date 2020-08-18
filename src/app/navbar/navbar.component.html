@@ -11,10 +11,20 @@
             matTooltip="Join Server">
             <i class="fab fa-discord"></i>
         </a>
+        <a class="nav-item nav-link" href="https://github.com/theADAMJR/DList" target="_blank"
+            matTooltip="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a class="nav-item nav-link" [href]="inviteURL" target="_blank"
+            matTooltip="Add Bot">
+            <i class="fas fa-plus-circle"></i>
+        </a>
     </div>
     <div class="nav navbar-nav ml-auto">
         <div *ngIf="!user">
-            <a class="nav-item nav-link" routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+            <a class="nav-item nav-link" routerLink="/login">
+                <i class="fa fa-user" aria-hidden="true"></i> Login
+            </a>
         </div>
         <div *ngIf="user">
             <div class="dropdown">
