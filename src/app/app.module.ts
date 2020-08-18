@@ -51,6 +51,7 @@ import { SEOService } from './services/seo.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { WavesComponent } from './waves/waves.component';
 import { ZippyComponent } from './zippy/zippy.component';
+import { ReportModalComponent } from './report-modal/report-modal.component';
 
 
 @Injectable()
@@ -118,7 +119,8 @@ export class AlertErrorHandler implements ErrorHandler {
     GuildLogComponent,
     CookieBannerComponent,
     VotesWidgetComponent,
-    GuildWidgetComponent
+    GuildWidgetComponent,
+    ReportModalComponent
   ],
   imports: [
     AppRoutingModule,

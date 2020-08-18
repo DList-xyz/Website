@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { SEOService } from 'src/app/services/seo.service';
 import { TagService } from 'src/app/services/tag.service';
-import { UserService } from 'src/app/services/user.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'add-guild',
@@ -16,8 +14,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./add-guild.component.css']
 })
 export class AddGuildComponent implements AfterViewInit {
-  @Input() editing = true;
-
   preview = false;
   editor: SimpleMDE;
 
@@ -33,8 +29,8 @@ export class AddGuildComponent implements AfterViewInit {
 
   @Input() guild = {
     id: '',
-    iconURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
-    name: 'New Guild'
+    iconURL: '/assets/img/logo.png',
+    name: 'New Server'
   }
 
   @Input() savedGuild = {
@@ -74,21 +70,14 @@ export class AddGuildComponent implements AfterViewInit {
         ?.setValue(this.savedGuild.listing[key]);
     
     this.editor.value(this.savedGuild.listing.body);
-
-    const draft = localStorage.getItem('guildListingDraft');
-    
-    if (!this.editing && draft)
-      this.form.setValue(JSON.parse(draft));
   }
 
   private hookEvents() {
     const container = document.querySelector('.editor-container') as HTMLElement;
     container.onclick = container.onkeyup = () => {
-      this.form.get('body').setValue(this.editor?.value());
-      this.updateDraft();
+      this.form.get('body')
+        .setValue(this.editor?.value());
     };
-
-    this.form.valueChanges.subscribe(() => this.updateDraft());
   }
 
   private initializeEditor() {
@@ -115,11 +104,6 @@ export class AddGuildComponent implements AfterViewInit {
       ]
     });
   }
-
-  private updateDraft() {
-    localStorage.setItem('guildListingDraft', JSON.stringify(this.form.value));   
-    this.savedGuild.listing = this.form.value; 
-  }
   
   filterTags(filter: string): void {
     this.filteredTags = this.tagService.tags
@@ -128,23 +112,16 @@ export class AddGuildComponent implements AfterViewInit {
           .includes(filter.toLowerCase()));
   }
 
-  submit() {
-    this.form.controls.body.setValue(this.editor.value());
-    if (this.form.invalid)
-      return this.form.setErrors({ invalid: true });
-    
-    this.guildService.createGuild(this.form.value);
-  }
   update() {    
     this.form.controls.body.setValue(this.editor.value());
     if (this.form.invalid)
       return this.form.setErrors({ invalid: true });
     
-    this.guildService.updateGuild(this.form.value.guildId, this.form.value);
+    this.guildService.updateGuild(this.guild.id, this.form.value);
   }
 
   navigateToGuildListing() {
-    this.router.navigate(['/servers/', this.form.value.guildId]);
+    this.router.navigate(['/servers/', this.guild.id]);
   }
 
   // input events

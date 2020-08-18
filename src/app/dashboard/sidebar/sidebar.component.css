@@ -96,10 +96,10 @@ mat-sidenav {
 
 .close {
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 15px;
 
-    font-size: 48px;
+    font-size: 36px;
 
     color: var(--primary);
     text-shadow: none;

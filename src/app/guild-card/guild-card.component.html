@@ -2,8 +2,11 @@
   class="fade-in text-center rounded-lg card shadow text-white bg-dark">
   <div [routerLink]="['/servers/', guild.id]"
     class="cursor-pointer d-flex justify-content-center">
-    <img class="shadow rounded-lg card-img-top"
+    <img *ngIf="guild.iconURL" class="shadow rounded-lg card-img-top"
       [src]="guild.iconURL"
+      [alt]="guild.name + ' | ' + cleanTags">
+    <img *ngIf="!guild.iconURL" class="shadow rounded-lg card-img-top py-4"
+      src="/assets/img/icon.png"
       [alt]="guild.name + ' | ' + cleanTags">
   </div>
   <div class="card-body">
@@ -18,7 +21,7 @@
         <p class="color-muted mb-1">{{ savedGuild.listing.overview }}</p>
         <p class="color-secondary">{{ cleanTags }}</p>
     </div>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around mb-1">
       <button [routerLink]="['/servers/' + guild.id]"
         class="bg-secondary rounded-lg" mat-button>
         <i class="fa fa-question" aria-hidden="true"></i>
@@ -26,8 +29,9 @@
       <a [href]="savedGuild.invite">
         <button class="rounded-lg" color="success" mat-button>
           <i class="fa fa-plus" aria-hidden="true"></i>
-      </button>
+        </button>
       </a>
     </div>
+    <span class="text-center text-muted">{{ lastBumpTimestamp }}</span>
   </div>
 </div>

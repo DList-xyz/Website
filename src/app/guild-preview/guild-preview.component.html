@@ -40,6 +40,10 @@
         <button *ngIf="canManage"
             [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
             class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
+
+        <button type="button" data-toggle="modal" data-target="#reportModal"
+            class="rounded-lg mr-2" color="warning" mat-button><i class="fas fa-flag"></i></button>
+            
         <a *ngIf="savedGuild.invite"
             [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
             class="rounded-lg bg-primary mr-2" mat-button><i class="fas fa-plus-circle"></i> Join</a>
@@ -47,6 +51,7 @@
             [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
             class="rounded-lg bg-primary mr-2"
             matTooltip="Invite not generated." disabled mat-button><i class="fas fa-plus-circle"></i> Join</a>
+
         <button [routerLink]="['/servers/' + guild.id +'/vote']"
             class="bg-secondary" mat-button><i class="fas fa-chevron-circle-up"></i> Vote</button>
     </span>
@@ -74,3 +79,5 @@
         </div>
     </div>
 </div>
+
+<report-modal [guild]="guild"></report-modal>

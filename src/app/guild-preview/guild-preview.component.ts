@@ -62,6 +62,10 @@ export class GuildPreviewComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  async report(reason: string) {
+    
+  }
+
   async addBadge(name: string) {
     await this.service.addBadge(this.guild.id, name);
     await this.service.refreshGuilds();

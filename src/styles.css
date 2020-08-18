@@ -98,6 +98,14 @@ mat-chip a {
     color: inherit !important;
 }
 
+pre {
+    color: var(--secondary);
+    background-color: var(--background-tertiary);
+    border-radius: 5px;
+
+    padding: 10px;
+}
+
 /* global */
 .mat-chip.mat-standard-chip {
     background-color: var(--primary) !important;
@@ -203,7 +211,7 @@ mat-paginator {
     background-color: var(--background-primary) !important;
 }
 
-.modal-content {    
+.modal-content:not(.small-modal-content) {
     min-width: 50vw;
 
     margin: 0 !important;

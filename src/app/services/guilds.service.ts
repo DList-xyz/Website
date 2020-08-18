@@ -77,20 +77,20 @@ export class GuildsService {
   }
 
   getBumpedGuilds() {
-    const savedGuilds = this.savedGuilds.filter(g => g.lastBumpedAt);
+    const savedGuilds = [...this.savedGuilds]
+      .sort((a, b) => a.lastBumpAt > b.lastBumpAt ? -1 : 1);
+
     const ids = savedGuilds.map(g => g._id);
-    const guilds = [];
-    for (const id of ids)
-      guilds.push(this.guilds.find(g => g.id === id));
+    const guilds = ids.map(id => this.guilds.find(g => g.id === id));
 
     return { guilds, saved: savedGuilds };
   }
   getTopGuilds() {
-    const savedGuilds = this.savedGuilds.sort((a, b) => b.votes.length - a.votes.length);
+    const savedGuilds = [...this.savedGuilds]
+      .sort((a, b) => b.votes.length - a.votes.length);
+
     const ids = savedGuilds.map(g => g._id);
-    const guilds = [];
-    for (const id of ids)
-      guilds.push(this.guilds.find(g => g.id === id));
+    const guilds = ids.map(id => this.guilds.find(g => g.id === id));
 
     return { guilds, saved: savedGuilds };
   }
@@ -99,11 +99,9 @@ export class GuildsService {
       .filter(g => g.approvedAt &&
         g.listing?.tags
         .some(n => n === tagName));
-    const ids = savedGuilds.map(g => g._id);
 
-    const guilds = [];
-    for (const id of ids)
-      guilds.push(this.guilds.find(g => g.id === id));
+    const ids = savedGuilds.map(g => g._id);
+    const guilds = ids.map(id => this.guilds.find(g => g.id === id));
 
     return { guilds, saved: savedGuilds };
   }
@@ -147,9 +145,6 @@ export class GuildsService {
     return { guilds, saved: savedGuilds };
   }
 
-  createGuild(value: any) {
-    return this.http.post(`${this.endpoint}?key=${this.key}`, value).toPromise() as Promise<any>;
-  }
   updateGuild(id: string, value: any) {
     return this.http.put(`${this.endpoint}/${id}?key=${this.key}`, value).toPromise() as Promise<any>;
   }

@@ -47,6 +47,8 @@ export class GuildsComponent implements OnInit, AfterViewInit {
       var { guilds, saved } = this.service.getFeaturedGuilds();
     else if (this.tag.name === 'new')
       var { guilds, saved } = this.service.getNewGuilds();
+    else if (this.tag.name === 'top')
+      var { guilds, saved } = this.service.getTopGuilds();
     else
       var { guilds, saved } = this.service.getTaggedGuilds(this.tag.name);
 
@@ -65,7 +67,7 @@ export class GuildsComponent implements OnInit, AfterViewInit {
   }
 
   private loadGuilds(page = 1) {
-    const { guilds, saved } = this.service.getTopGuilds();
+    const { guilds, saved } = this.service.getBumpedGuilds();
     this.guilds = guilds;
     this.savedGuilds = saved;
 

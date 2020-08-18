@@ -4,12 +4,9 @@
     <div [hidden]="preview" class="container">
         <div class="container">
                 <div class="d-flex justify-content-between">
-                    <h1 [textContent]="editing ? 'Edit ' + guild?.name : 'Add Server'"
-                        class="display-4">Add Server</h1>
+                    <h1 class="display-4">Edit {{ guild?.name }}</h1>
                     <button id="previewButton" (click)="preview = true"
-                        class="rounded-lg mt-3" type="button" color="success" mat-button>
-                        <i class="fas fa-binoculars"></i> Preview
-                    </button>
+                        class="rounded-lg mt-3" type="button" color="success" mat-button><i class="fas fa-binoculars"></i></button>
                 </div>
             <hr>
         </div>
@@ -45,13 +42,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <rocket-button *ngIf="!editing"
-                            id="submit"
-                            [precondition]="form.valid"
-                            (click)="submit()"
-                            (animated)="navigateToGuildListing()">Add Guild</rocket-button>
-                        <rocket-button *ngIf="editing"
-                            id="update"
+                        <rocket-button id="update"
                             [precondition]="form.valid"
                             (click)="update()"
                             (animated)="navigateToGuildListing()">Update Guild</rocket-button>
@@ -62,14 +53,9 @@
                 <a [routerLink]="['/docs/guidelines']" routerLinkActive="active"
                     class="nav-item nav-link">
                     <i class="fas fa-book"></i> Guidelines for adding a server.</a>
-                <div *ngIf="!editing"
-                    class="alert alert-warning border-warning">
-                    You must join and stay in the <a class="text-primary" href="/server">DList Discord server</a>, for your server to be accepted.
-                    You may only edit your guild once it has been invited by an admin.
-                </div>
 
                 <h3>Server Card</h3>
-                <p>This is what your guild card will look like to new users.</p>
+                <p>This is what your server card will look like to new users.</p>
                 <div class="d-flex justify-content-center mb-5">
                     <guild-card class="mt-5"
                         [guild]="guild"

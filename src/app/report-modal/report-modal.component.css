@@ -1,0 +1,7 @@
+.modal-content,
+.modal-header,
+.modal-body,
+.modal-footer {
+  max-width: 420px !important;
+  border-color: transparent;
+}
