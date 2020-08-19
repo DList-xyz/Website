@@ -9,5 +9,4 @@ import { environment } from 'src/environments/environment';
 export class HomeFooterComponent {
   statusURL = 'https://DList.statuspage.io';
   version = environment.version;
-  anchorVersion = environment.version.replace(/\./g, '');
 }

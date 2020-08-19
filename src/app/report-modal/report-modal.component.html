@@ -15,8 +15,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="report.emit(reason.value)"
-          type="button" class="btn btn-warning text-light" cols="50" data-dismiss="modal">Report</button>
+        <button (click)="emitReport()"
+          type="button" class="text-light g-recaptcha" color="warning" mat-button>Report</button>
       </div>
     </div>
   </div>
