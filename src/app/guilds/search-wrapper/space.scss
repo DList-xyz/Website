@@ -16,31 +16,31 @@
 .glowing_stars .star:nth-child(1) {
   top: 80%;
   left: 25%;
-  animation: glow-star 2s infinite ease-in-out alternate 1s
+  animation: glow-star 2s infinite ease-in-out alternate 1s;
 }
 
 .glowing_stars .star:nth-child(2) {
   top: 60%;
   left: 40%;
-  animation: glow-star 2s infinite ease-in-out alternate 3s
+  animation: glow-star 2s infinite ease-in-out alternate 3s;
 }
 
 .glowing_stars .star:nth-child(3) {
   top: 50%;
   left: 25%;
-  animation: glow-star 2s infinite ease-in-out alternate 5s
+  animation: glow-star 2s infinite ease-in-out alternate 5s;
 }
 
 .glowing_stars .star:nth-child(4) {
   top: 75%;
   left: 80%;
-  animation: glow-star 2s infinite ease-in-out alternate 7s
+  animation: glow-star 2s infinite ease-in-out alternate 7s;
 }
 
 .glowing_stars .star:nth-child(5) {
   top: 90%;
   left: 50%;
-  animation: glow-star 2s infinite ease-in-out alternate 9s
+  animation: glow-star 2s infinite ease-in-out alternate 9s;
 }
 
 @-moz-keyframes glow-star {
@@ -77,41 +77,50 @@
 }
 
 @keyframes rocket-movement-right {
-  0% { height: 0; }
-  100% { transform: translate(1200px, -600px); }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  100% { transform: translate(100vw, -60vw); }
 }
 @-moz-keyframes rocket-movement-right {
-  0% { height: 0; }
-  100% { -moz-transform: translate(1200px, -600px); }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  100% { -moz-transform: translate(100vw, -60vw); }
 }
 @-webkit-keyframes rocket-movement-right {
-  0% { height: 0; }
-  100% { -webkit-transform: translate(1200px, -600px); }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  100% { -webkit-transform: translate(100vw, -60vw); }
 }
 
 @keyframes rocket-movement-left {
-  0% { height: 0; transform: rotate(180deg); }
-  100% { transform: translate(-1200px, 600px) rotate(180deg); }
+  0% { opacity: 0; transform: rotate(180deg); }
+  1% { opacity: 1; }
+  100% { transform: translate(-100vw, 60vw) rotate(180deg); }
 }
 @-moz-keyframes rocket-movement-left {
-  0% { height: 0; -moz-transform: rotate(180deg); }
-  100% { -moz-transform: translate(-1200px, 600px) rotate(180deg); }
+  0% { opacity: 0; transform: rotate(180deg); }
+  1% { opacity: 1; }
+  100% { -moz-transform: translate(-100vw, 60vw) rotate(180deg); }
 }
 @-webkit-keyframes rocket-movement-left {
-  0% { height: 0; -webkit-transform: rotate(180deg); }
-  100% { -webkit-transform: translate(-1200px, 600px) rotate(180deg); }
+  0% { opacity: 0; transform: rotate(180deg); }
+  1% { opacity: 1; }
+  100% { -webkit-transform: translate(-100vw, 60vw) rotate(180deg); }
 }
 
 @keyframes ufo-movement {
-  0% { height: 0; }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
   100% { transform: translate(300px, 2050px) rotate(360deg); }
 }
 @-moz-keyframes ufo-movement {
-  0% { height: 0; }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
   100% { -moz-transform: translate(300px, 2050px) rotate(360deg); }
 }
 @-webkit-keyframes ufo-movement {
-  0% { height: 0; }
+  0% { opacity: 0; }
+  1% { opacity: 1; }
   100% { -webkit-transform: translate(300px, 2050px) rotate(360deg); }
 }
 
@@ -122,7 +131,7 @@
   left: 0px;
 
   pointer-events: none;
-  animation: rocket-movement-right 175s linear infinite both running;
+  animation: rocket-movement-right 90s linear infinite both running;
   animation-delay: random(500) + s;
 }
 .rocket-2 {
@@ -132,7 +141,7 @@
   right: 0;
 
   pointer-events: none;
-  animation: rocket-movement-left 200s linear infinite both running;
+  animation: rocket-movement-left 135s linear infinite both running;
   animation-delay: random(500) + s;
 }
 .rocket-3 {
@@ -142,7 +151,7 @@
   left: 0px;
 
   pointer-events: none;
-  animation: rocket-movement-right 150s linear infinite both running;
+  animation: rocket-movement-right 120s linear infinite both running;
   animation-delay: random(500) + s;
 }
 .rocket-4 {
@@ -152,7 +161,7 @@
   left: 0px;
 
   pointer-events: none;
-  animation: rocket-movement-right 250s linear infinite both running;
+  animation: rocket-movement-right 135s linear infinite both running;
 }
 .rocket-5 {
   z-index: -1;
@@ -161,7 +170,7 @@
   right: 0px;
 
   pointer-events: none;
-  animation: rocket-movement-left 200s linear infinite both running;
+  animation: rocket-movement-left 150s linear infinite both running;
   animation-delay: random(500) + s;
 }
 .rocket-6 {
@@ -171,7 +180,7 @@
   right: 0px;
 
   pointer-events: none;
-  animation: rocket-movement-left 150s linear infinite both running;
+  animation: rocket-movement-left 100s linear infinite both running;
   animation-delay: random(500) + s;
 }
 
