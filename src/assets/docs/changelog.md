@@ -10,6 +10,19 @@
 
 ---
 
+### v0.0.2a
+`Upcoming`
+
+**Add**:
+
+**Change/Fix**:
+- `/` -> higher quality icons
+
+**Remove**:
+- `/api/guilds` -> unnecessary guild properties
+
+---
+
 ### v0.0.1a
 `18/08/2020`
 ![v0.0.1a](assets/docs/img/v0.0.1a.png)

@@ -78,6 +78,8 @@ export class AddGuildComponent implements AfterViewInit {
       this.form.get('body')
         .setValue(this.editor?.value());
     };
+
+    this.form.valueChanges.subscribe(() => this.savedGuild.listing = this.form.value);
   }
 
   private initializeEditor() {
