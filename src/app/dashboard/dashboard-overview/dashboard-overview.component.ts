@@ -26,7 +26,5 @@ export class DashboardComponent implements OnInit {
     });
 
     await this.guildService.init();
-
-    this.unreviewedSavedGuilds = this.guildService.unreviewedGuilds.saved;
   }
 }

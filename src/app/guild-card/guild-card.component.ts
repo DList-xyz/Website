@@ -11,6 +11,7 @@ export class GuildCardComponent {
   @Input() guild = {
     id: '',
     iconURL: environment.defaultIconURL,
+    memberCount: 0,
     name: 'Server'
   }
   

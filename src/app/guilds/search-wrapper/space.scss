@@ -77,43 +77,49 @@
 }
 
 @keyframes rocket-movement-right {
+  0% { height: 0; }
   100% { transform: translate(1200px, -600px); }
 }
 @-moz-keyframes rocket-movement-right {
+  0% { height: 0; }
   100% { -moz-transform: translate(1200px, -600px); }
 }
 @-webkit-keyframes rocket-movement-right {
+  0% { height: 0; }
   100% { -webkit-transform: translate(1200px, -600px); }
 }
 
 @keyframes rocket-movement-left {
-  0% { transform: rotate(180deg); }
+  0% { height: 0; transform: rotate(180deg); }
   100% { transform: translate(-1200px, 600px) rotate(180deg); }
 }
 @-moz-keyframes rocket-movement-left {
-  0% { -moz-transform: rotate(180deg); }
+  0% { height: 0; -moz-transform: rotate(180deg); }
   100% { -moz-transform: translate(-1200px, 600px) rotate(180deg); }
 }
 @-webkit-keyframes rocket-movement-left {
-  0% { -webkit-transform: rotate(180deg); }
+  0% { height: 0; -webkit-transform: rotate(180deg); }
   100% { -webkit-transform: translate(-1200px, 600px) rotate(180deg); }
 }
 
 @keyframes ufo-movement {
-  100% { transform: translate(300px, 1000px) rotate(360deg); }
+  0% { height: 0; }
+  100% { transform: translate(300px, 2050px) rotate(360deg); }
 }
 @-moz-keyframes ufo-movement {
-  100% { -moz-transform: translate(300px, 1000px) rotate(360deg); }
+  0% { height: 0; }
+  100% { -moz-transform: translate(300px, 2050px) rotate(360deg); }
 }
 @-webkit-keyframes ufo-movement {
-  100% { -webkit-transform: translate(300px, 1000px) rotate(360deg); }
+  0% { height: 0; }
+  100% { -webkit-transform: translate(300px, 2050px) rotate(360deg); }
 }
 
 .rocket-1 {
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  left: -50px;
+  left: 0px;
 
   pointer-events: none;
   animation: rocket-movement-right 175s linear infinite both running;
@@ -123,7 +129,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  right: -10%;
+  right: 0;
 
   pointer-events: none;
   animation: rocket-movement-left 200s linear infinite both running;
@@ -133,7 +139,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  left: -50px;
+  left: 0px;
 
   pointer-events: none;
   animation: rocket-movement-right 150s linear infinite both running;
@@ -143,7 +149,7 @@
   z-index: -1;
   position: absolute;
   top: 65vh;
-  left: -50px;
+  left: 0px;
 
   pointer-events: none;
   animation: rocket-movement-right 250s linear infinite both running;
@@ -152,7 +158,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  right: -50px;
+  right: 0px;
 
   pointer-events: none;
   animation: rocket-movement-left 200s linear infinite both running;
@@ -162,7 +168,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  right: -50px;
+  right: 0px;
 
   pointer-events: none;
   animation: rocket-movement-left 150s linear infinite both running;
@@ -178,7 +184,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  right: -50px;
+  right: 0px;
 
   pointer-events: none;
   animation: rocket-movement-left 50s linear infinite both running; 
@@ -188,7 +194,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  right: -50px;
+  right: 0px;
 
   pointer-events: none;
   animation: rocket-movement-left 50s linear infinite both running;
@@ -198,7 +204,7 @@
   z-index: -1;
   position: absolute;
   top: random(300) + vh;
-  left: -50px;
+  left: 0px;
 
   pointer-events: none;
   animation: rocket-movement-right 20s linear infinite both running;
@@ -213,7 +219,7 @@
   z-index: -1;
   position: absolute;
   bottom: -100px;
-  left: -50px;
+  left: 0px;
 
   pointer-events: none;
   animation: ufo-movement 30s linear infinite both running;

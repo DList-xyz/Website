@@ -20,19 +20,6 @@ export class GuildsService {
   private _userSavedGuilds: any[];
   get userSavedGuilds() { return this._userSavedGuilds; }
 
-  get unreviewedGuilds() {
-    const savedGuilds = this.savedGuilds
-      .filter(g => g.flags.length > 0)
-      .sort((a, b) =>
-        a.flags[Math.min(0, a.flags.length - 1)].at - b.fbgs[Math.min(0, b.flags.length - 1)].at);
-    const ids = savedGuilds.map(g => g._id);
-    const guilds = [];
-    for (const id of ids)
-      guilds.push(this.guilds.find(g => g.id === id));
-
-    return { guilds, saved: savedGuilds };
-  }
-
   constructor(
     private http: HttpClient,
     private userService: UserService) {}
