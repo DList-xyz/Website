@@ -9,8 +9,6 @@ import { GuildsService } from 'src/app/services/guilds.service';
   styleUrls: ['./dashboard-overview.component.css']
 })
 export class DashboardComponent implements OnInit {
-  unreviewedSavedGuilds = [];
-
   constructor(
     public guildService: GuildsService,
     private seo: SEOService,

@@ -12,10 +12,13 @@
           <mat-label>Reason</mat-label>
           <textarea type="text" required matInput #reason></textarea>
         </mat-form-field>
+        <re-captcha (resolved)="resolved($event)" siteKey="6LfvCsEZAAAAAJjjEsBvG5PWnh_45rqCp_RuFZfi"></re-captcha>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="emitReport()"
+        <button (click)="canSubmit && emitReport()"
+          [disabled]="!canSubmit" [class.text-muted]="!canSubmit"
+          data-dismiss="modal"
           type="button" class="text-light g-recaptcha" color="warning" mat-button>Report</button>
       </div>
     </div>

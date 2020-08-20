@@ -52,7 +52,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { WavesComponent } from './waves/waves.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ReportModalComponent } from './report-modal/report-modal.component';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @Injectable()
@@ -133,7 +133,7 @@ export class AlertErrorHandler implements ErrorHandler {
     MaterialModule,
     HighlightModule,
     ChartsModule,
-    RecaptchaV3Module
+    RecaptchaModule
   ],
   providers: [
     SEOService,
@@ -142,8 +142,7 @@ export class AlertErrorHandler implements ErrorHandler {
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: { languages: getHighlightLanguages() }
-    },
-    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LfvCsEZAAAAAJjjEsBvG5PWnh_45rqCp_RuFZfi' },
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [

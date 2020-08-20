@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MatInput } from '@angular/material/input';
-import { RecaptchaModule, ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'report-modal',
@@ -10,12 +9,17 @@ import { RecaptchaModule, ReCaptchaV3Service } from 'ng-recaptcha';
 export class ReportModalComponent {
   @Input() guild: any;
   @Output() report = new EventEmitter();
-  @ViewChild('reason') reason: MatInput;
-  
-  constructor(private recaptchaV3Service: ReCaptchaV3Service) {}
+  @ViewChild('reason') reason: ElementRef;
+
+  canSubmit = false;
+
+  resolved(captchaResponse: string) {
+    this.canSubmit = true;
+    
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
 
   emitReport() {    
-    this.recaptchaV3Service.execute('report')
-      .subscribe((token) => this.report.emit(this.reason.value));
+    this.report.emit(this.reason.nativeElement.value);
   }
 }

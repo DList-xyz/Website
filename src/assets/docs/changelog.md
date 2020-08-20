@@ -14,6 +14,7 @@
 `Upcoming`
 
 **Add**:
+- `/guilds/:id` -> report captcha 
 
 **Change/Fix**:
 - `/` -> higher quality icons
