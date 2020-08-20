@@ -67,7 +67,9 @@
     <div [hidden]="!preview">
         <div class="container">
             <button (click)="preview = false"
-                class="float-right" color="danger" mat-button>&times;</button>
+                class="float-right" color="danger" mat-button>
+                <i class="fas fa-times"></i>
+            </button>
 
             <guild-preview *ngIf="guild"
                 [savedGuild]="savedGuild"
