@@ -1,0 +1,89 @@
+<header class="jumbotron mb-0">
+    <div class="container">
+        <img [src]="guild.iconURL || defaultIconURL">
+        <h1>{{ guild.name }}</h1>
+        <div>
+            <span class="pl-3"><i class="fas fa-chevron-circle-up" matTooltip="Votes"></i> {{ savedGuild.votes.length | number }}</span>
+            <span class="border border-dark py-1 mx-4"></span>
+            <span>
+                <span *ngIf="savedGuild.badges?.includes('featured')"
+                    matTooltip="Featured."
+                    class="ml-2 cursor-pointer">
+                    <i class="color-gold fas fa-star"></i>
+                </span>
+            </span>
+        </div>
+        <div>
+            <span class="text-muted" role="doc-subtitle">{{ savedGuild.listing.overview }}</span>
+        </div>
+    </div>
+</header>
+<waves [inverted]="true"></waves>
+
+<div class="container mt-3 py-1">
+    <span id="buttons" *ngIf="!preview"
+        class="float-right">
+        <span *ngIf="userService.isAdmin"
+            class="pb-5 mr-4">
+            <mat-form-field>
+                <mat-label>Add Badge</mat-label>
+                <input type="text" placeholder="Name" #badgeInput matInput>
+            </mat-form-field>
+            <button (click)="addBadge(badgeInput.value)"
+                mat-button>
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </button>
+        </span>
+        <button *ngIf="canManage || userService.isAdmin"
+            (click)="delete()"
+            id="delete" class="mr-2" color="danger" mat-button><i class="fas fa-trash"></i> Delete</button>
+        <button *ngIf="canManage"
+            [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
+            class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
+
+        <button *ngIf="userService.user"
+            type="button" data-toggle="modal" data-target="#reportModal"
+            [matTooltip]="'Report ' + guild.name"
+            class="rounded-lg mr-2" color="warning" mat-button><i class="fas fa-flag"></i></button>
+        <button *ngIf="!userService.user"
+            matTooltip="You must be logged in to report a server."
+            class="rounded-lg mr-2 text-muted" color="warning" mat-button><i class="fas fa-flag"></i></button>
+            
+        <a *ngIf="savedGuild.invite"
+            [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
+            class="rounded-lg bg-primary mr-2" mat-button><i class="fas fa-plus-circle"></i> Join</a>
+        <a *ngIf="!savedGuild.invite"
+            [href]="'https://discord.gg/' + savedGuild.invite" rel="nofollow"
+            class="rounded-lg bg-primary mr-2"
+            matTooltip="Invite not generated." disabled mat-button><i class="fas fa-plus-circle"></i> Join</a>
+
+        <button [routerLink]="['/servers/' + guild.id +'/vote']"
+            class="bg-secondary" mat-button><i class="fas fa-chevron-circle-up"></i> Vote</button>
+    </span>
+</div>
+
+<div id="markdown" class="container rounded my-4" [innerHTML]="markdown"></div>
+
+<div class="container mb-3">
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <mat-chip-list class="float-left">
+                <mat-chip *ngFor="let tagName of savedGuild.listing.tags"
+                    class="cursor-pointer"
+                    [routerLink]="['/tags/', tagName]">{{ tagName | kebabToTitleCase }}
+                    <i [class]="tagService.getTag(tagName)?.icon" class="ml-1" aria-hidden="true"></i>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="col-6">
+            <div class="float-right">
+                <span class="text-muted">Created By</span>
+                <member-username [user]="ownerUser"></member-username>
+            </div>
+        </div>
+    </div>
+</div>
+
+<report-modal (report)="report($event)"
+    [guild]="guild"></report-modal>

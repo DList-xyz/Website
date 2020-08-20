@@ -1,0 +1,70 @@
+<guild-sidebar [guild]="guild">
+  <section *ngIf="guild && stats && savedGuild"
+    class="container">
+    <div class="row color-heading">
+        <div class="col-lg-3 col-sm-6">
+            <div class="stats cursor-pointer"
+              matTooltip="Date of last bump.">
+              <i class="fas fa-check"></i>
+              {{ savedGuild.lastBumpAt | cleanDateTime }}
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="stats cursor-pointer"
+            matTooltip="Date of last server vote.">
+            <i class="fas fa-calendar-check"></i>
+            {{ stats.general.lastVoteAt | cleanDateTime }}
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="stats cursor-pointer"
+            matTooltip="Number of total votes this week.">
+            <i class="fas fa-chevron-circle-up"></i>
+            {{ stats.general.voteCount | number }}
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="stats cursor-pointer"
+            matTooltip="Number of all-time total votes.">
+            <i class="fas fa-chevron-up"></i>
+            {{ stats.general.totalVotes | number }}
+          </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="large stats">
+                <votes-widget [id]="guild.id"></votes-widget>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="large stats">
+                <audit-log-widget></audit-log-widget>
+            </div>
+        </div>
+    </div>
+  </section>
+  <section *ngIf="!guild && !savedGuild"
+    class="container">
+    <div class="jumbotron">
+      <p class="lead">The bot is not in this server.</p>
+      <a [href]="inviteURL" target="_blank">
+        <button color="success" mat-button>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+        </button>
+      </a>
+    </div>
+  </section>
+  <section *ngIf="guild && !savedGuild"
+    class="container">
+    <div class="jumbotron">
+      <p class="lead">Server listing was deleted, please type <code>.dl invite</code> to create one.</p>
+      <a [href]="inviteURL" target="_blank">
+        <button color="success" mat-button>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+        </button>
+      </a>
+    </div>
+  </section>
+</guild-sidebar>

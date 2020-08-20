@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">
+        <img src="assets/img/logo.png" alt="DList Logo">
+    </a>
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link" routerLink="/docs" routerLinkActive="active"
+            matTooltip="Docs">
+            <i class="fa fa-book" aria-hidden="true"></i>
+        </a>
+        <a class="nav-item nav-link" [href]="discordInvite" routerLinkActive="active"
+            matTooltip="Join Server">
+            <i class="fab fa-discord"></i>
+        </a>
+        <a class="nav-item nav-link" href="https://github.com/DList-xyz/" target="_blank"
+            matTooltip="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a class="nav-item nav-link" [href]="inviteURL" target="_blank"
+            matTooltip="Add Bot">
+            <i class="fas fa-plus-circle"></i>
+        </a>
+    </div>
+    <div class="nav navbar-nav ml-auto">
+        <div *ngIf="!user">
+            <a class="nav-item nav-link" routerLink="/login">
+                <i class="fa fa-user" aria-hidden="true"></i> Login
+            </a>
+        </div>
+        <div *ngIf="user">
+            <div class="dropdown">
+                <a class="nav-item nav-link dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img [src]="user.displayAvatarURL"> {{ user.username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                    <hr class="m-1">
+                    <a class="dropdown-item" routerLink="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

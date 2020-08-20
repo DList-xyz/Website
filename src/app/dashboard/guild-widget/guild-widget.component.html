@@ -1,0 +1,29 @@
+<guild-sidebar [guild]="guild"
+    [loaded]="savedGuild && guild">
+  <div *ngIf="savedGuild && guild"
+    class="container">
+    <header>
+        <h1 class="display-4">{{ guild.name }} Widget</h1>
+    </header>
+    <div class="d-flex justify-content-center">
+      <div>
+        <a [href]="'/servers/' + id">
+          <img [src]="widgetURL" [alt]="guild.name">
+        </a>
+        <form #f="ngForm" [formGroup]="form">
+          <mat-form-field class="ml-5 mt-2" appearance="outline">
+            <mat-label>Size</mat-label>
+            <mat-select formControlName="size">
+              <mat-option value="small">Small</mat-option>
+              <mat-option value="medium">Medium</mat-option>
+              <mat-option value="large" selected>Large</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <pre><code>&lt;a href="https://dlist.xyz/servers/{{ guild.id }}"&gt;
+  &lt;img src="{{ widgetURL }}" alt="View on DList"&gt;
+&lt;a&gt;</code></pre>
+  </div>
+</guild-sidebar>

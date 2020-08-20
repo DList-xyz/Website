@@ -1,0 +1,52 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #drawer mode="side" opened>
+        <div class="side-nav navbar-dark">
+            <h2 class="m-4">
+                DList <i class="fas fa-book-open" aria-hidden="true"></i>
+                <span (click)="toggle()"
+                    class="float-right d-sm-none d-block close">
+                    <i class="fas fa-times"></i>
+                </span>
+                </h2>
+            <hr>
+
+            <div class="navbar-nav">
+                <p class="category">General <i class="fa fa-arrow-right" aria-hidden="true"></i></p>
+                <a class="nav-link" 
+                    routerLink="/docs/api" routerLinkActive="active">API</a>
+                <a class="nav-link" 
+                    routerLink="/docs/get-started" routerLinkActive="active">Get Started</a>
+
+                <hr>
+                
+                <p class="category">Servers <i class="fas fa-server"></i></p>
+                <a class="nav-link" 
+                    routerLink="/docs/badges" routerLinkActive="active">Badges</a>
+                <a class="nav-link" 
+                    routerLink="/docs/get-featured" routerLinkActive="active">Get Featured</a>
+                <a class="nav-link" 
+                    routerLink="/docs/guidelines" routerLinkActive="active">Guidelines</a>
+                <a class="nav-link" 
+                    routerLink="/docs/how-it-works" routerLinkActive="active">How It Works</a>
+                <a class="nav-link" 
+                    routerLink="/docs/widget" routerLinkActive="active">Widget</a>
+
+                <p class="category">Other <i class="fas fa-info-circle"></i></p>
+                <a class="nav-link" 
+                    routerLink="/docs/changelog" routerLinkActive="active">Changelog</a>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <navbar></navbar>
+        <button class="toggle">
+            <div id="nav-icon1" class="open"
+                (click)="toggle()">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+        </button>
+        <ng-content select="#content"></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

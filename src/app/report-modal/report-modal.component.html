@@ -1,0 +1,26 @@
+<div id="reportModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content small-modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Report {{ guild.name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="text-light" aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <mat-form-field appearance="outline">
+          <mat-label>Reason</mat-label>
+          <textarea type="text" required matInput #reason></textarea>
+        </mat-form-field>
+        <re-captcha (resolved)="resolved($event)" siteKey="6LfvCsEZAAAAAJjjEsBvG5PWnh_45rqCp_RuFZfi"></re-captcha>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="canSubmit && emitReport()"
+          [disabled]="!canSubmit" [class.text-muted]="!canSubmit"
+          data-dismiss="modal"
+          type="button" class="text-light g-recaptcha" color="warning" mat-button>Report</button>
+      </div>
+    </div>
+  </div>
+</div>

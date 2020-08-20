@@ -1,0 +1,80 @@
+<guild-sidebar
+    [guild]="guild"
+    [loaded]="savedGuild && guild">
+    <div [hidden]="preview" class="container">
+        <div class="container">
+            <div class="d-flex justify-content-between mb-4">
+                <h1 class="display-4">Edit {{ guild?.name }}</h1>
+                <button id="previewButton" (click)="preview = true"
+                    class="rounded-lg mt-3" type="button" color="success" mat-button><i class="fas fa-binoculars"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form #f="ngForm" [formGroup]="form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Overview</mat-label>
+                        <textarea formControlName="overview" type="text" matInput required></textarea>
+                        <mat-error *ngIf="form.get('overview').invalid">Required, and should be between less than 128 characters in length.</mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tags</mat-label>
+                        <mat-select multiple
+                            formControlName="tags">
+                            <input class="p-3" placeholer="Search" (input)="filterTags($event.target.value)" matInput>
+                            <mat-option *ngFor="let tag of filteredTags" 
+                                [value]="tag.name">{{ tag.name | kebabToTitleCase }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('tags').invalid">No more than 5 tags.</mat-error>
+                    </mat-form-field>
+
+                    <div class="editor-container mt-3">
+                        <label for="editor">Body</label>
+                        <textarea id="editor" formControlName="body" placeholder="300 characters minimum (markdown allowed)" hidden></textarea>
+                        <mat-error *ngIf="form.get('body').invalid">Body is required.</mat-error>
+                    </div>
+
+                    <div *ngIf="form.hasError('invalid')"
+                        class="alert alert-error border border-danger">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Some form values are invalid.
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <rocket-button id="update"
+                            [precondition]="form.valid"
+                            (click)="update()"
+                            (animated)="navigateToGuildListing()">Update</rocket-button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 d-none d-sm-block border-left">
+                <a [routerLink]="['/docs/guidelines']" routerLinkActive="active"
+                    class="nav-item nav-link">
+                    <i class="fas fa-book"></i> Guidelines for adding a server.</a>
+
+                <h3>Server Card</h3>
+                <p>This is what your server card will look like to new users.</p>
+                <div class="d-flex justify-content-center mb-5">
+                    <guild-card class="mt-5"
+                        [guild]="guild"
+                        [savedGuild]="savedGuild"></guild-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div [hidden]="!preview">
+        <div class="container">
+            <button (click)="preview = false"
+                class="float-right" color="danger" mat-button>
+                <i class="fas fa-times"></i>
+            </button>
+
+            <guild-preview *ngIf="guild"
+                [savedGuild]="savedGuild"
+                [guild]="guild"
+                [preview]="true"></guild-preview>
+        </div>
+    </div>
+</guild-sidebar>

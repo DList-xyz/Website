@@ -1,0 +1,30 @@
+<div *ngIf="initialized">
+    <h2 class="pt-5"><i [class]="icon"></i> {{ title }}</h2>
+    <p class="color-secondary pb-4">{{ description }}</p>
+    <div class="row">
+        <div *ngFor="let savedGuild of paginate(savedGuilds)"
+            class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+            <guild-card [savedGuild]="savedGuild"
+                [guild]="service.getGuild(savedGuild._id)"
+                class="m-3"></guild-card>
+        </div>
+        <div id="paginator" class="col-12">
+            <div class="p-3 float-right">
+                <span (click)="previousPage()"
+                    [hidden]="page <= 1"
+                    class="cursor-pointer ml-1">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </span>
+                <span class="mx-3">{{ page }}</span>
+                <span (click)="nextPage()"
+                    [hidden]="page >= lastPage"
+                    class="cursor-pointer m-1">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!initialized">
+    <spinner></spinner>
+</div>
