@@ -41,7 +41,7 @@ export class GuildPreviewComponent implements OnInit {
   }
 
   get canManage() {
-    return this.userService.user?.id === this.savedGuild.ownerId;
+    return this.service.canManage(this.guild.id);
   }
 
   constructor(

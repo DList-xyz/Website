@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import Fuse from 'fuse.js';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
+import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 @Injectable({ providedIn: 'root' })
 export class GuildsService {
@@ -36,23 +37,26 @@ export class GuildsService {
   }
 
   async refreshGuilds() {
-    const guilds = await this.http.get(`${this.endpoint}`).toPromise() as any;
+    const { saved, guilds } = await this.http.get(`${this.endpoint}`).toPromise() as any;
 
-    this._savedGuilds = guilds.saved
-      .sort((a, b) => b.votes.length - a.votes.length);    
+    this._savedGuilds = saved
+      .filter(s => guilds.some(g => g.id === s._id))
+      .sort((a, b) => b.votes.length - a.votes.length);
 
     const ids = this.savedGuilds.map(g => g._id);
-    this._guilds = guilds.guilds.filter(g => ids.includes(g.id));
+    this._guilds = guilds.filter(g => ids.includes(g.id));
   }
   async refreshUserGuilds() {
     await this.userService.init(); 
 
-    const userSavedGuilds = this.savedGuilds
-      .filter(g => g.ownerId === this.userService.user.id);
-    this._userSavedGuilds = userSavedGuilds;
+    const userGuilds = this.guilds
+      .filter(g => g.managerIds.includes(this.userService.user.id));
+    this._userGuilds = userGuilds;
 
-    const ids = userSavedGuilds.map(g => g._id);
-    this._userGuilds = ids.map(id => this.guilds.find(g => g.id === id));
+    this._userSavedGuilds = userGuilds
+      .map(g => g.id)
+      .filter(id => this.savedGuilds
+        .find(g => g._id === id));
   }
   getSavedLog(id: string) {
     return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise() as Promise<any>;
@@ -172,6 +176,11 @@ export class GuildsService {
 
   report(id: string, reason: string) {
     return this.http.get(`${this.endpoint}/${id}/report?key=${this.key}&reason=${reason}`).toPromise() as Promise<any>;
+  }
+
+  canManage(id: string) {
+    const guild = this.guilds.find(g => g.id === id);
+    return guild?.managerIds.includes(this.userService.user.id); 
   }
 }
 
