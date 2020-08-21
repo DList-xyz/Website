@@ -75,7 +75,8 @@ export class GuildsService {
 
   getBumpedGuilds() {
     const savedGuilds = [...this.savedGuilds]
-      .sort((a, b) => a.lastBumpAt > b.lastBumpAt ? -1 : 1);
+      .filter(g => g.lastBumpAt)
+      .sort((a, b) => (a.lastBumpAt > b.lastBumpAt) ? -1 : 1);
 
     const ids = savedGuilds.map(g => g._id);
     const guilds = ids.map(id => this.guilds.find(g => g.id === id));

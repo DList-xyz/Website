@@ -68,6 +68,8 @@ export class GuildsComponent implements OnInit, AfterViewInit {
 
   private loadGuilds(page = 1) {
     const { guilds, saved } = this.service.getBumpedGuilds();
+    const mapped = saved.map(g => g.lastBumpAt);
+    debugger;
     this.guilds = guilds;
     this.savedGuilds = saved;
 
