@@ -179,8 +179,8 @@ export class GuildsService {
   }
 
   canManage(id: string) {
-    const guild = this.guilds.find(g => g.id === id);
-    return guild?.managerIds.includes(this.userService.user.id); 
+    const guild = this.guilds.find(g => g?.id === id);
+    return guild?.managerIds.includes(this.userService.user?.id); 
   }
 }
 

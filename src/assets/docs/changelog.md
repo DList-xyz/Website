@@ -18,6 +18,7 @@
 
 **Change/Fix**:
 - `/` -> higher quality icons
+- `/dashboard/servers/:id/edit` -> users with `MANAGE_GUILD` can now edit their server listing
 
 **Remove**:
 - `/api/v1/guilds` -> unnecessary guild properties

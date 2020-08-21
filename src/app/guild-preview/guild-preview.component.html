@@ -38,7 +38,7 @@
             (click)="delete()"
             id="delete" class="mr-2" color="danger" mat-button><i class="fas fa-trash"></i> Delete</button>
         <button *ngIf="canManage"
-            [routerLink]="['/dashboard/servers/' + guild.id + '/edit']"
+            [routerLink]="['/dashboard/servers/' + guild?.id + '/edit']"
             class="bg-warning mr-4" color="warning" mat-button><i class="fas fa-pencil-alt"></i> Edit</button>
 
         <button *ngIf="userService.user"
@@ -57,7 +57,7 @@
             class="rounded-lg bg-primary mr-2"
             matTooltip="Invite not generated." disabled mat-button><i class="fas fa-plus-circle"></i> Join</a>
 
-        <button [routerLink]="['/servers/' + guild.id +'/vote']"
+        <button [routerLink]="['/servers/' + guild?.id +'/vote']"
             class="bg-secondary" mat-button><i class="fas fa-chevron-circle-up"></i> Vote</button>
     </span>
 </div>
