@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "twopg-dashboard": {
+    "dlist-website": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/twopg-dashboard/browser",
+            "outputPath": "dist/dlist-website/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "twopg-dashboard:build"
+            "browserTarget": "dlist-website:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "twopg-dashboard:build:production"
+              "browserTarget": "dlist-website:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "twopg-dashboard:build"
+            "browserTarget": "dlist-website:build"
           }
         },
         "test": {
@@ -118,18 +118,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "twopg-dashboard:serve"
+            "devServerTarget": "dlist-website:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "twopg-dashboard:serve:production"
+              "devServerTarget": "dlist-website:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/twopg-dashboard/server",
+            "outputPath": "dist/dlist-website/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -150,21 +150,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "twopg-dashboard:build",
-            "serverTarget": "twopg-dashboard:server"
+            "browserTarget": "dlist-website:build",
+            "serverTarget": "dlist-website:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "twopg-dashboard:build:production",
-              "serverTarget": "twopg-dashboard:server:production"
+              "browserTarget": "dlist-website:build:production",
+              "serverTarget": "dlist-website:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "twopg-dashboard:build:production",
-            "serverTarget": "twopg-dashboard:server:production",
+            "browserTarget": "dlist-website:build:production",
+            "serverTarget": "dlist-website:server:production",
             "routes": [
               "/"
             ]
@@ -176,7 +176,7 @@
       }
     }
   },
-  "defaultProject": "twopg-dashboard",
+  "defaultProject": "dlist-website",
   "cli": {
     "analytics": "6e350057-1306-4152-b868-7ccc4b4c4614"
   }

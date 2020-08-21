@@ -5,9 +5,9 @@
 export const environment = {
   defaultIconURL: '/assets/img/icon.png',
   discordInvite: 'https://discord.gg/nH9D8Jg',
-  endpoint: 'http://localhost:3000/api',
+  endpoint: 'https://api.dlist.xyz/v1',
   production: false,
-  url: 'http://localhost:4200',
+  url: 'https://dlist.xyz',
   version: 'v0.0.1a'
 };
 

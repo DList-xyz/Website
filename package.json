@@ -1,5 +1,5 @@
 {
-  "name": "twopg-dashboard",
+  "name": "dlist-website",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,10 +9,10 @@
     "test:api": "cd api && ts-mocha tests/*/*.spec.ts",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run twopg-dashboard:serve-ssr",
-    "serve:ssr": "node dist/twopg-dashboard/server/main.js",
-    "build:ssr": "ng build --prod && ng run twopg-dashboard:server:production",
-    "prerender": "ng run twopg-dashboard:prerender"
+    "dev:ssr": "ng run dlist-website:serve-ssr",
+    "serve:ssr": "node dist/dlist-website/server/main.js",
+    "build:ssr": "ng build --prod && ng run dlist-website:server:production",
+    "prerender": "ng run dlist-website:prerender"
   },
   "private": true,
   "dependencies": {
