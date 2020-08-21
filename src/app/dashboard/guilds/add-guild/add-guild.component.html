@@ -31,7 +31,7 @@
 
                     <div class="editor-container mt-3">
                         <label for="editor">Body</label>
-                        <textarea id="editor" formControlName="body" placeholder="300 characters minimum (markdown allowed)" hidden></textarea>
+                        <textarea id="editor" formControlName="body" hidden></textarea>
                         <mat-error *ngIf="form.get('body').invalid">Body is required.</mat-error>
                     </div>
 
