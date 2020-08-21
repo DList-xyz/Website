@@ -34,7 +34,7 @@ A maximum of *600 requests* can be sent *per 10 minutes*.
 ## Server Stats
 You can view the stats of a server, including voting, servers and more.
 
-**URL**: `https://dlist.xyz/api/guilds/:id/stats`
+**URL**: `https://dlist.xyz/api/v1/guilds/:id/stats`
 
 ### Reponse
 
@@ -63,4 +63,4 @@ You can view the stats of a server, including voting, servers and more.
 }
 ```
 
-**Example**: `https://dlist.xyz/api/guilds/744166274028011561/stats`
+**Example**: `https://dlist.xyz/api/v1/guilds/744166274028011561/stats`

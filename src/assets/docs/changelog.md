@@ -20,7 +20,7 @@
 - `/` -> higher quality icons
 
 **Remove**:
-- `/api/guilds` -> unnecessary guild properties
+- `/api/v1/guilds` -> unnecessary guild properties
 
 ---
 

@@ -10,7 +10,7 @@ You will need to add a widget to your website to be featured.
 **HTML Widget Syntax**:
 ```
 <a href="https://dlist.xyz/guilds/[yourServerId]">
-  <img src="https://dlist.xyz/api/guilds/[serverId]/widget" alt="View on DList">
+  <img src="https://dlist.xyz/api/v1/guilds/[serverId]/widget" alt="View on DList">
 </a>
 ```
 
