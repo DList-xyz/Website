@@ -1,3 +1,8 @@
+#doc {
+  padding: 0 25px;
+  margin-bottom: 50px;
+}
+
 #doc img {
   max-width: 50vw;
   max-height: 50vh;
@@ -9,10 +14,6 @@
 
 #doc table {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-#doc {
-  margin-bottom: 50px;
 }
 
 #doc .alert-danger {

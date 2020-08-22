@@ -26,10 +26,10 @@ export class SearchWrapperComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
+    setTimeout(async() => {
       const query = this.route.snapshot.queryParamMap.get('q');
       if (query)
-        this.search(query);
+        await this.search(query);
 
       this.route.paramMap.subscribe(map => {
         const tagName = map.get('tag');
@@ -46,7 +46,7 @@ export class SearchWrapperComponent implements AfterViewInit {
     return this.tagService.tags[i].name;
   }
 
-  search(query: string) {
+  async search(query: string) {
     const extra = (query) ? { queryParams: { q: query } } : {};
     this.router.navigate(['search'], extra);
 
@@ -56,7 +56,7 @@ export class SearchWrapperComponent implements AfterViewInit {
       url: `search/q?=${query}`
     });
 
-    this.guildsComponent.search(query);
+    await this.guildsComponent.search(query);
   }
 
   searchByTag(name: string) {

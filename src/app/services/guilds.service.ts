@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import Fuse from 'fuse.js';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 @Injectable({ providedIn: 'root' })
 export class GuildsService {
@@ -123,24 +122,36 @@ export class GuildsService {
     return { guilds, saved: savedGuilds };
   }
   searchGuilds(query: string) {
-    const fuse = new Fuse(this.savedGuilds, {
+    const queryGuilds = this.savedGuilds
+      .map(saved => {
+        const guild = this.guilds.find(g => g.id === saved._id);
+        return {
+          id: guild?.id,
+          name: guild?.name,
+          listing: saved?.listing ?? {}
+        };
+      });
+
+    const fuse = new Fuse(queryGuilds, {
       includeScore: true,
       keys: [
-        { name: 'listing.overview', weight: 1 },
+        { name: 'id', weight: 1 },
+        { name: 'name', weight: 0.8 },
+        { name: 'listing.overview', weight: 0.6 },
         { name: 'listing.body', weight: 0.5 },
         { name: 'listing.tags', weight: 0.3 }
       ]
     });
-    
-    const savedGuilds = fuse
+
+    const searchGuilds = fuse
       .search(query)
-      .map(r => r.item);    
+      .map(r => r.item);
 
-    const ids = savedGuilds.map(g => g._id);
-    const guilds = this.guilds
-      .filter(b => ids.includes(b.id));    
-
-    return { guilds, saved: savedGuilds };
+    const ids = searchGuilds.map(g => g.id);
+    return {
+      guilds: this.guilds.filter(g => ids.includes(g.id)),
+      saved: this.savedGuilds.filter(g => ids.includes(g._id))
+    };
   }
 
   updateGuild(id: string, value: any) {
