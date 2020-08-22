@@ -4,11 +4,10 @@
   <guild-preview *ngIf="savedGuild.listing"
     [guild]="guild"
     [savedGuild]="savedGuild"></guild-preview>
+    <home-footer></home-footer>
 </div>
 
 <div *ngIf="!savedGuild || !guild"
   class="container">
   <spinner></spinner>
 </div>
-
-<home-footer></home-footer>

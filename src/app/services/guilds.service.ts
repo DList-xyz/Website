@@ -93,8 +93,7 @@ export class GuildsService {
   }
   getTaggedGuilds(tagName: string) {
     const savedGuilds = this.savedGuilds
-      .filter(g => g.approvedAt &&
-        g.listing?.tags
+      .filter(g => g.listing?.tags
         .some(n => n === tagName));
 
     const ids = savedGuilds.map(g => g._id);

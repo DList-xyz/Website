@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SEOService as SEOService, TypingSEO } from 'src/app/services/seo.service';
 import { kebabToLowerCase, kebabToTitleCase } from 'src/app/utils';
 import { TagService } from 'src/app/services/tag.service';
+import { GuildsService } from 'src/app/services/guilds.service';
 
 @Component({
   selector: 'search-wrapper',
@@ -19,20 +20,23 @@ export class SearchWrapperComponent implements AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
+    private guildService: GuildsService,
     private router: Router,
     private seo: SEOService,
     public tagService: TagService) {
     this.placeholder = kebabToLowerCase(this.getRandomPlaceholder());
   }
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
+    await this.guildService.init();
+    
     setTimeout(async() => {
       const query = this.route.snapshot.queryParamMap.get('q');
       if (query)
         await this.search(query);
 
       this.route.paramMap.subscribe(map => {
-        const tagName = map.get('tag');
+        const tagName = map.get('tag');        
         if (tagName)
           this.searchByTag(tagName);
       });
