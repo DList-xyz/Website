@@ -24,7 +24,7 @@
 - `/dashboard/servers/:id/edit` -> users with `MANAGE_GUILD` can now edit their server listing
 - `/` -> bumped guilds only show if they have been bumped
 - `/search` -> you can now search by server ID or server name 
-- `/search` -> tags searching now filters correctly
+- `/search` -> search by tags now filters correctly
 
 **Remove**:
 - `/api/v1/guilds` -> unnecessary guild properties
