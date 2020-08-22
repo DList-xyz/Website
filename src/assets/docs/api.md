@@ -42,8 +42,7 @@ You can view the stats of a server, including voting, servers and more.
 ```ts
 {
   general: { // general guild stats
-    approvedAt: Date,
-    guildCount: number,
+    memberCount: number,
     lastVoteAt: Date,
     totalVotes: number,
     voteCount: number

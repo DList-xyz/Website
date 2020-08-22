@@ -11,7 +11,7 @@
 ---
 
 ### v0.0.2a
-`Upcoming`
+`22/08/2020`
 
 ![v0.0.2a](/assets/docs/img/v0.0.2a.png)
 
@@ -25,6 +25,7 @@
 - `/` -> bumped guilds only show if they have been bumped
 - `/search` -> you can now search by server ID or server name 
 - `/search` -> search by tags now filters correctly
+- `/api/v1/guilds/:id/stats` -> `stats.topVoters` now returns correct value
 
 **Remove**:
 - `/api/v1/guilds` -> unnecessary guild properties
