@@ -10,6 +10,17 @@
 
 ---
 
+### v0.0.3a
+`Upcoming`
+
+<!-- ![v0.0.3a](/assets/docs/img/v0.0.3a.png) -->
+
+**Add**:
+- `*` -> semi auto sitemap generation
+- `/search` -> search by server manager ID
+
+---
+
 ### v0.0.2a
 `22/08/2020`
 
@@ -35,6 +46,7 @@
 
 ### v0.0.1a
 `18/08/2020`
+
 ![v0.0.1a](/assets/docs/img/v0.0.1a.png)
 
 [DList](/) and the [DList Discord Server](/server) is released!

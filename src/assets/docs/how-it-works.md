@@ -4,18 +4,18 @@
 
 # How It Works
 
-## Bumped Servers
-Servers bumped most recently.
-
-## Top Servers
-Servers with the most votes.
-
-## New Servers
-Servers less than one week old, ranked by the most votes.
-
 ---
 
 ## Searching
 `Overview`, `Body` and `Tags`, in order of use, are used to display results.
 
-To best results make sure to optimize these fields with keywords etc.
+Property      | Search Weight
+:-            |:-
+`ID`          | 1
+`Manager IDs` | 1
+`Name`        | 0.8
+`Overview`    | 0.6
+`Body`        | 0.5
+`Tags`        | 0.3
+
+**Search weight** is how much power is given to the property value in yielding the search result. Hence, searching a bot by ID is *more specific* or *more accurate* than searching by *name*.

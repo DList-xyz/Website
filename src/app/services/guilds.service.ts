@@ -140,7 +140,7 @@ export class GuildsService {
         { name: 'name', weight: 0.8 },
         { name: 'listing.overview', weight: 0.6 },
         { name: 'listing.body', weight: 0.5 },
-        { name: 'listing.tags', weight: 0.3 },
+        { name: 'listing.tags', weight: 0.3 }
       ]
     });
 
