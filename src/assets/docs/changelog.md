@@ -21,8 +21,9 @@
 
 **Change/Fix**:
 - `/` -> higher quality icons
-- `/dashboard/servers/:id/edit` -> users with `MANAGE_GUILD` can now edit their server listing
 - `/` -> bumped guilds only show if they have been bumped
+- `/dashboard/servers/:id/edit` -> users with `Manage Server` can now edit their server listing
+- `/dashboard/servers/:id/edit` -> fixed `Invalid Access Token` disco-oauth bug
 - `/search` -> you can now search by server ID or server name 
 - `/search` -> search by tags now filters correctly
 - `/api/v1/guilds/:id/stats` -> `stats.topVoters` now returns correct value

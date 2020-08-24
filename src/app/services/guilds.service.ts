@@ -127,6 +127,7 @@ export class GuildsService {
         return {
           id: guild?.id,
           name: guild?.name,
+          managerIds: guild.managerIds,
           listing: saved?.listing ?? {}
         };
       });
@@ -135,10 +136,11 @@ export class GuildsService {
       includeScore: true,
       keys: [
         { name: 'id', weight: 1 },
+        { name: 'managerIds', weight: 1 },
         { name: 'name', weight: 0.8 },
         { name: 'listing.overview', weight: 0.6 },
         { name: 'listing.body', weight: 0.5 },
-        { name: 'listing.tags', weight: 0.3 }
+        { name: 'listing.tags', weight: 0.3 },
       ]
     });
 
