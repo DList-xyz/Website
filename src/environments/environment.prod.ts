@@ -4,5 +4,5 @@ export const environment = {
   endpoint: 'https://dlist.xyz/api/v1',
   production: true,
   url: 'https://dlist.xyz',
-  version: 'v0.0.1a'
+  version: 'v0.0.2a'
 };

@@ -8,7 +8,7 @@ export const environment = {
   endpoint: 'http://localhost:3000/api/v1',
   production: false,
   url: 'http://localhost:4200',
-  version: 'v0.0.1a'
+  version: 'v0.0.2a'
 };
 
 /*
