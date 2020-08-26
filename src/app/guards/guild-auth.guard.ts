@@ -12,10 +12,9 @@ export class GuildAuthGuard implements CanActivate {
     await this.service.init();
 
     const id = next.paramMap.get('id');
-    const ownsGuild = this.service.userGuilds.some(g => g.id === id);
+    const ownsGuild = this.service.userGuilds?.some(g => g.id === id);
     if (!ownsGuild)
       this.router.navigate(['/dashboard']);
-
-    return ownsGuild;
+    return true;
   }  
 }

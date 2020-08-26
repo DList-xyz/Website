@@ -19,6 +19,12 @@
 - `*` -> semi auto sitemap generation
 - `/search` -> search by server manager ID
 
+**Change/Fix**:
+- `/search` -> replace search for `managerIds` with `ownerId`
+
+**Remove**:
+- `/dashboard/guilds/:id/edit` -> editor was changed to textarea due to dependency issues
+
 ---
 
 ### v0.0.2a

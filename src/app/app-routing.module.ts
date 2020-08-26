@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardAuthGuard } from './guards/dashboard-auth.guard';
 import { DocsComponent } from './docs/docs.component';
-import { AddGuildComponent } from './dashboard/guilds/add-guild/add-guild.component';
 import { SearchWrapperComponent } from './guilds/search-wrapper/search-wrapper.component';
 import { GuildAuthGuard } from './guards/guild-auth.guard';
 import { GuildPageComponent } from './guild-page/guild-page.component';

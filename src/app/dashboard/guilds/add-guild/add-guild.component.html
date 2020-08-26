@@ -31,8 +31,8 @@
 
                     <div class="editor-container mt-3">
                         <label for="editor">Body</label>
-                        <textarea id="editor" formControlName="body" hidden></textarea>
-                        <mat-error *ngIf="form.get('body').invalid">Body is required.</mat-error>
+                        <textarea id="editor" formControlName="body"></textarea>
+                        <mat-error *ngIf="form.get('body').invalid" matInput>Body is required.</mat-error>
                     </div>
 
                     <div *ngIf="form.hasError('invalid')"

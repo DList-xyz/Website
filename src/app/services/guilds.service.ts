@@ -54,8 +54,7 @@ export class GuildsService {
 
     this._userSavedGuilds = userGuilds
       .map(g => g.id)
-      .filter(id => this.savedGuilds
-        .find(g => g._id === id));
+      .filter(id => this.getSavedGuild(id));
   }
   getSavedLog(id: string) {
     return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise() as Promise<any>;
@@ -83,13 +82,12 @@ export class GuildsService {
     return { guilds, saved: savedGuilds };
   }
   getTopGuilds() {
-    const savedGuilds = [...this.savedGuilds]
-      .sort((a, b) => b.votes.length - a.votes.length);
-
-    const ids = savedGuilds.map(g => g._id);
-    const guilds = ids.map(id => this.guilds.find(g => g.id === id));
-
-    return { guilds, saved: savedGuilds };
+    return {
+      guilds: this.savedGuilds
+        .map(sb => this.guilds.find(g => g.id === sb._id)),
+      saved: [...this.savedGuilds]
+        .sort((a, b) => b.votes.length - a.votes.length)
+    };
   }
   getTaggedGuilds(tagName: string) {
     const savedGuilds = this.savedGuilds
@@ -127,7 +125,7 @@ export class GuildsService {
         return {
           id: guild?.id,
           name: guild?.name,
-          managerIds: guild.managerIds,
+          ownerId: saved.ownerId,
           listing: saved?.listing ?? {}
         };
       });
@@ -136,7 +134,7 @@ export class GuildsService {
       includeScore: true,
       keys: [
         { name: 'id', weight: 1 },
-        { name: 'managerIds', weight: 1 },
+        { name: 'ownerId', weight: 1 },
         { name: 'name', weight: 0.8 },
         { name: 'listing.overview', weight: 0.6 },
         { name: 'listing.body', weight: 0.5 },

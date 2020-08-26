@@ -1,6 +1,9 @@
 .text-center {
     text-align: center;
 }
+.normal-font {
+    font-family: inherit !important;
+}
 
 .uppercase {
     text-transform: uppercase;

@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import SimpleMDE from 'simplemde';
 import { toIterable } from 'src/app/utils';
 import { GuildsService } from 'src/app/services/guilds.service';
 import { Router } from '@angular/router';
@@ -15,7 +14,6 @@ import { TagService } from 'src/app/services/tag.service';
 })
 export class AddGuildComponent implements AfterViewInit {
   preview = false;
-  editor: SimpleMDE;
 
   toIterable = toIterable;
   filteredTags = this.tagService.tags;
@@ -58,7 +56,6 @@ export class AddGuildComponent implements AfterViewInit {
     setTimeout(async () => {
       await this.guildService.init();
 
-      this.initializeEditor();
       this.initFormValue();
       this.hookEvents();
     });
@@ -68,43 +65,11 @@ export class AddGuildComponent implements AfterViewInit {
     for (const key in this.savedGuild.listing)
       this.form.controls[key]
         ?.setValue(this.savedGuild.listing[key]);
-    
-    this.editor.value(this.savedGuild.listing.body);
   }
 
   private hookEvents() {
-    const container = document.querySelector('.editor-container') as HTMLElement;
-    container.onclick = container.onkeyup = () => {
-      this.form.get('body')
-        .setValue(this.editor?.value());
-    };
-
-    this.form.valueChanges.subscribe(() => this.savedGuild.listing = this.form.value);
-  }
-
-  private initializeEditor() {
-    const element = document.querySelector('#editor') as HTMLElement;
-    this.editor = new SimpleMDE({
-      element,
-      toolbar: [
-        'bold',
-        'italic',
-        'strikethrough',
-        'heading',
-        '|',
-        'image',
-        'link',
-        'code',
-        'quote',
-        '|',
-        'ordered-list',
-        'unordered-list',
-        'horizontal-rule',
-        'table',
-        '|',
-        'guide'
-      ]
-    });
+    this.form.valueChanges
+      .subscribe(() => this.savedGuild.listing = this.form.value);
   }
   
   filterTags(filter: string): void {
@@ -114,8 +79,7 @@ export class AddGuildComponent implements AfterViewInit {
           .includes(filter.toLowerCase()));
   }
 
-  async update() {    
-    this.form.controls.body.setValue(this.editor.value());
+  async update() {
     if (this.form.invalid)
       return this.form.setErrors({ invalid: true });
     

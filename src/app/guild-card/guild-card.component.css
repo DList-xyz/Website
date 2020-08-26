@@ -62,3 +62,7 @@ p {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+button {
+    font-family: 'Whitney' !important;
+}

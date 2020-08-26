@@ -2,10 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, Injectable, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,7 +52,7 @@ import { WavesComponent } from './waves/waves.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ReportModalComponent } from './report-modal/report-modal.component';
 import { RecaptchaModule } from 'ng-recaptcha';
-
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 @Injectable()
 export class AlertErrorHandler implements ErrorHandler {
@@ -124,25 +123,21 @@ export class AlertErrorHandler implements ErrorHandler {
     ReportModalComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    TransferHttpCacheModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    HighlightModule,
     ChartsModule,
     RecaptchaModule
   ],
   providers: [
     SEOService,
     { provide: ErrorHandler, useClass: AlertErrorHandler },
-    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: { languages: getHighlightLanguages() }
-    }
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ],
   bootstrap: [AppComponent],
   schemas: [
@@ -150,9 +145,3 @@ export class AlertErrorHandler implements ErrorHandler {
   ]
 })
 export class AppModule {}
-
-export function getHighlightLanguages() {
-  return {
-    json: () => import('highlight.js/lib/languages/json')
-  };
-}
