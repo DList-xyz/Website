@@ -1,10 +1,11 @@
 .stars {
   background: url(../../../assets/img/space/overlay_stars.svg);
+  background-attachment: fixed;
 }
 
 .glowing_stars .star {
   z-index: -2;
-  position: absolute;
+  position: fixed;
   border-radius: 100%;
   background-color: #fff;
   width: 8px;
