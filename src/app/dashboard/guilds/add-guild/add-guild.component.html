@@ -29,11 +29,12 @@
                         <mat-error *ngIf="form.get('tags').invalid">No more than 5 tags.</mat-error>
                     </mat-form-field>
 
-                    <div class="editor-container mt-3">
-                        <label for="editor">Body</label>
-                        <textarea id="editor" formControlName="body"></textarea>
-                        <mat-error *ngIf="form.get('body').invalid" matInput>Body is required.</mat-error>
-                    </div>
+                    <mat-form-field id="editor" appearance="outline">
+                        <mat-label>Body</mat-label>
+                        <textarea formControlName="body" rows="5" cols="80"
+                            placeholder="Markdown is allowed." matInput></textarea>
+                        <mat-error *ngIf="form.get('body').invalid">Body is required.</mat-error>
+                    </mat-form-field>
 
                     <div *ngIf="form.hasError('invalid')"
                         class="alert alert-error border border-danger">

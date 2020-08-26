@@ -174,30 +174,6 @@ mat-paginator {
     outline: none !important;
 }
 
-/* editor */
-.container .editor-toolbar a {
-    color: var(--font) !important;
-}
-.CodeMirror-scroll {
-    max-height: 100vh !important;
-}
-.CodeMirror, .container .editor-toolbar {
-    border-color: var(--background-tertiary) !important;
-    background-color: var(--background-secondary) !important;
-    color: var(--font) !important;
-}
-.CodeMirror-cursor {
-    border-left-color: var(--heading) !important;
-}
-
-.cm-spell-error {
-    background-color: rgba(255, 230, 0, 0.15) !important;
-}
-
-.cm-header-1 {
-    color: var(--heading);
-}
-
 /* paginator */
 .mat-paginator-page-size {
     display: none !important;
