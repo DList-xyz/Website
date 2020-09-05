@@ -7,21 +7,37 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import compression from 'compression';
 
+import domino from 'domino';
+import fs from 'fs';
 import 'localstorage-polyfill';
+import fetch from 'node-fetch';
 
+const template = fs.readFileSync(join(process.cwd(), 'dist/dlist-website/browser', 'index.html')).toString();
+const win = domino.createWindow(template) as any;
+
+global['fetch'] = fetch;
 global['localStorage'] = localStorage;
 
-export const server = express();
+global['window'] = win;
+global['document'] = win.document;
+global['DOMTokenList'] = win.DOMTokenList;
+global['Node'] = win.Node;
+global['Text'] = win.Text;
+global['HTMLElement'] = win.HTMLElement;
+global['navigator'] = win.navigator;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
+  const server = express();
+
   const distFolder = join(process.cwd(), 'dist/dlist-website/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
+    bootstrap: AppServerModule
   }));
 
   server.set('view engine', 'html');
@@ -30,12 +46,12 @@ export function app() {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get('*.*', express.static(distFolder, {
+  server.get('*.*', compression(), express.static(distFolder, {
     maxAge: '1y'
   }));
 
   // All regular routes use the Universal engine
-  server.get('*', (req, res) => {
+  server.get('*', compression(), (req, res) => {    
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
