@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MatInput } from '@angular/material/input';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'report-modal',
@@ -11,6 +12,7 @@ export class ReportModalComponent {
   @Output() report = new EventEmitter();
   @ViewChild('reason') reason: ElementRef;
 
+  recaptchaSiteKey = environment.recaptchaSiteKey;
   canSubmit = false;
 
   resolved(captchaResponse: string) {

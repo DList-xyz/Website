@@ -6,6 +6,7 @@ export const environment = {
   defaultIconURL: '/assets/img/icon.png',
   discordInvite: 'https://discord.gg/nH9D8Jg',
   endpoint: 'http://localhost:3000/api/v1',
+  recaptchaSiteKey: '6LfvCsEZAAAAAJjjEsBvG5PWnh_45rqCp_RuFZfi',
   production: false,
   url: 'http://localhost:4200',
   version: 'v0.0.2a'

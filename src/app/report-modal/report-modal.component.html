@@ -12,7 +12,7 @@
           <mat-label>Reason</mat-label>
           <textarea type="text" required matInput #reason></textarea>
         </mat-form-field>
-        <re-captcha (resolved)="resolved($event)" siteKey="6LfvCsEZAAAAAJjjEsBvG5PWnh_45rqCp_RuFZfi"></re-captcha>
+        <re-captcha (resolved)="resolved($event)" [siteKey]="recaptchaSiteKey"></re-captcha>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
